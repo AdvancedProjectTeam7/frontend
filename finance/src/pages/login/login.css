@@ -1,20 +1,12 @@
-.background-login{
-  background-image: linear-gradient(to right, rgb(85, 189, 44) , rgb(56, 90, 37));
-
-  min-width: 100vh;
-  min-height: 100vh;
-}
-
 .logo1 {
-  position: relative;
-  margin-left: 25%;
   margin-top: 100px;
+  width: 430px;
+  height: 305px;
 }
 
 .logo-title {
-  font-size: 40px;
+  font-size: 30px;
   color: #a5ada5;
-  margin-left: 28%;
 }
 .login-title {
   color: #4f7439;
@@ -25,7 +17,7 @@
 
 .container {
   display: flex;
-  width: 90%;
+  width: 75%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -34,6 +26,10 @@
 }
 
 .left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 50%;
   background-color: #4f7439;
   padding: 5% 0;
@@ -101,6 +97,13 @@
   transform: translate(0px, -20px);
 }
 
+.input-filled {
+  transform: translateY(-20px);
+  font-size: 12px;
+  color: #666;
+  transition: all 0.2s ease-in-out;
+  font-size: 16px;
+}
 
 /* button */
 .btn-login {
@@ -121,4 +124,32 @@
   color: white;
   background: #4f7439;
   box-shadow: 0;
+}
+
+@media (max-width: 992px) and (min-width: 280px) {
+  .logo-title {
+    display: none;
+  }
+  .logo1 {
+    width: 250px;
+    height: 180px;
+  }
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+  .email-wrapper,
+  .pass-wrapper {
+    width: 100%;
+  }
+  .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
 }

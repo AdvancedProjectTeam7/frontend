@@ -10,7 +10,8 @@ class AllRoutes extends Component {
       <BrowserRouter>
         <Routes>
           
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
+            
          
         </Routes>
       </BrowserRouter>
