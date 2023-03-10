@@ -126,6 +126,11 @@
   box-shadow: 0;
 }
 
+.my-toast-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 @media (max-width: 992px) and (min-width: 280px) {
   .logo-title {
     display: none;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
 import logo from "./images/logo-finance2.png";
 
@@ -11,8 +12,6 @@ function Login() {
     email: false,
     password: false,
   });
-
-  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -30,27 +29,37 @@ function Login() {
     }));
   };
 
-  const handleLogin = () => {
-    axios.post("http://localhost:8000/api/auth/login", { email, password })
+  const handleLogin = (e) => {
+    e.preventDefault();
+  
+    axios
+      .post("http://localhost:8000/api/auth/login", { email, password })
       .then((response) => {
         const data = response.data;
-        if (data.token) {
-          console.log(email);
-          localStorage.setItem("loggedInAdminId", data.id);
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("email", data.email);
-          navigate("/dashboard"); // redirect to dashboard
+        console.log("Server response:", data);
+        if (response.status === 200 && data && data.token) {
+          localStorage.setItem("loggedInAdminId", data.id || '');
+          localStorage.setItem("token", data.token || '');
+          localStorage.setItem("email", data.email || '');
+          console.log("Local storage:", localStorage);
+          toast.success("Success Login !", {
+            position: toast.POSITION.TOP_CENTER,
+          });
         } else {
-          alert("Invalid credentials");
+          throw new Error("Invalid email or password");
         }
       })
       .catch((error) => {
-        console.error("Error checking credentials:", error);
+        console.error("Error logging in:", error);
+        toast.error("An error occurred while logging in", {
+          position: toast.POSITION.TOP_CENTER,
+        });
       });
   };
 
   return (
     <>
+      <ToastContainer className="my-toast-container" />
       <div className="container">
         <div className="left-side">
           <img className="logo1" src={logo} alt="logo" />
@@ -97,7 +106,7 @@ function Login() {
 
             <button className="btn-login" onClick={handleLogin}>
               {" "}
-              Button
+              Login
               <span></span>
             </button>
           </form>
