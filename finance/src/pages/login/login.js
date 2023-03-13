@@ -13,6 +13,7 @@ function Login() {
     email: false,
     password: false,
   });
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -47,7 +48,7 @@ function Login() {
         toast.success("Success Login !", {
           position: toast.POSITION.TOP_CENTER,
         });
-    
+        navigate("/dashboard");
       } else {
         throw new Error("Invalid email or password");
       }

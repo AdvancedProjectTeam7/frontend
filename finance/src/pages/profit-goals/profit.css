@@ -4,3 +4,28 @@
   justify-content: center;
   align-items: center;
 }
+.css-5xe99f-MuiLinearProgress-bar1 {
+  background-color: green !important;
+}
+
+.css-eglki6-MuiLinearProgress-root {
+  background-color: rgb(184, 174, 174) !important;
+}
+.css-r40f8v-MuiTypography-root {
+  color: green !important;
+  font-size: 25px !important;
+}
+
+.profit-title {
+  position: absolute;
+  margin-left: 24%;
+  font-size: 30px;
+  color: green;
+  top: 35%;
+}
+.profit-edit-icon{
+  position: absolute;
+  font-size: 40px;
+  margin-left: 70%;
+  top: 35%;
+}
