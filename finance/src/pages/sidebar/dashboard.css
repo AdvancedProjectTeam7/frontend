@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 :root {
-    --main-color: #dd2f6e;
-    --color-dark: #1d2231;
+    --main-color: #4f7439;
+    --color-dark: #a5ada5;
     --text-grey: #8390a2;
 }
 
@@ -16,49 +16,54 @@
 }
 
 .sidebar {
-    width: 345px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 310px;
     position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
+    height: 100vh;
     background: var(--main-color);
     z-index: 100;
+    transition: 0.3s width ease-in-out;
+    gap: 50px;
 }
 
 .sidebar-brand {
     display: flex;
     flex-direction: row;
-    height: 90px;
-    padding: 2rem 0rem 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 500%;
     color: #fff;
+    font-size: 16px;
 }
 
 .sidebar-brand span {
-    display: inline-block;
-    padding-right: 1rem;
     font-size: 1.5rem;
 }
 
 .sidebar-menu {
-    margin-top: 4rem;
     display: flex;
     flex-direction: column;
-    gap: 20rem;
-}
-
-.sidebar-menu li {
-    width: 100%;
-    margin-bottom: 3.5rem;
-    padding-left: 1rem;
+    justify-content: space-between;
+    height: 80vh;
 }
 
 .sidebar-menu a {
-    padding-left: 1rem;
     display: flex;
     flex-direction: row;
-    gap: 0.6rem;
+    gap: 10px;
     color: #fff;
     font-size: 1.5rem;
+    padding: 1rem 1rem;
+}
+
+.sidebar-menu-first ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40vh;
 }
 
 #nav-toggle:checked + .sidebar {
@@ -66,20 +71,23 @@
 }
 
 #nav-toggle:checked + .sidebar .sidebar-brand h2,
-#nav-toggle:checked + .sidebar li a span:last-child {
+#nav-toggle:checked + .sidebar ul a span:last-child {
     display: none;
 }
 
 .sidebar-menu a:active {
     background: #fff;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem 1rem;
     color: var(--main-color);
-    border-radius: 30px 0px 0px 30px;
+    border-radius: 39px;
+    transition: all 0.3s ease-in-out;
 }
 
-.main-content {
-    margin-left: 345px;
+#nav-toggle:checked ~ .main-content header {
+    left: 80px;
+    width: calc(100% - 80px);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
 }
 
 header {
@@ -89,10 +97,11 @@ header {
     padding: 1rem 1.5rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
-    left: 345px;
-    width: calc(100% - 345px);
+    left: 310px;
+    width: calc(100% - 310px);
     top: 0;
     z-index: 100;
+    transition: all 0.3s ease-in-out;
 }
 
 #nav-toggle {
@@ -146,4 +155,24 @@ header h2 {
 .user-wrapper small {
     display: inline-block;
     color: var(--text-grey);
+}
+
+@media only screen and (max-width: 1200px) {
+    .sidebar {
+        width: 80px;
+    }
+
+    .sidebar .sidebar-brand h2,
+    .sidebar ul a span:last-child {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+
+    .main-content header {
+        left: 80px;
+        width: calc(100% - 80px);
+    }
 }

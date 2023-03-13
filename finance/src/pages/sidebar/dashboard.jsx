@@ -1,12 +1,12 @@
 import React from "react";
 import "./dashboard.css";
 import { BsSearch } from "react-icons/bs";
-import { FaChartLine } from "react-icons/fa";
 import { AiOutlineBars, AiOutlineTransaction } from "react-icons/ai";
 import { FiLogOut, FiUsers } from "react-icons/fi";
 import { BiCategory } from "react-icons/bi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { Link } from "react-router-dom";
+import image from "../images/logo.png";
 
 const DashBoard = () => {
     return (
@@ -15,55 +15,37 @@ const DashBoard = () => {
             <div className="sidebar">
                 <div className="sidebar-brand">
                     <span className="lab la-accusoft">
-                        <FaChartLine />
+                        <img src={image} alt="" width={"60px"} height={"40x"} />
                     </span>
-                    <h2>Financial App</h2>
+                    <h2>Finance Management</h2>
                 </div>
                 <div className="sidebar-menu">
-                    <ul>
-                        <li>
-                            <Link to="/" className="active">
-                                <span className="las la-dashboard">
-                                    <SiHomeassistantcommunitystore />
-                                </span>
-                                <span>Home</span>
+                    <div className="sidebar-menu-first">
+                        <ul>
+                            <Link to="/dashboard" className="active">
+                                <SiHomeassistantcommunitystore />
+                                <span>Dashboard</span>
                             </Link>
-                        </li>
-                        <li>
-                            <Link to="/">
-                                <span className="las la-admins">
-                                    <FiUsers />
-                                </span>
+                            <Link to="/admins">
+                                <FiUsers />
                                 <span>Admins</span>
                             </Link>
-                        </li>
-                        <li>
-                            <Link to="/">
-                                <span className="las la-categories">
-                                    <BiCategory />
-                                </span>
+                            <Link to="/categories">
+                                <BiCategory />
                                 <span>Categories</span>
                             </Link>
-                        </li>
-                        <li>
-                            <Link to="/">
-                                <span className="las la-transactions">
-                                    <AiOutlineTransaction />
-                                </span>
+                            <Link to="/transactions">
+                                <AiOutlineTransaction />
                                 <span>Transactions</span>
                             </Link>
-                        </li>
-                    </ul>
-                    <div>
+                        </ul>
+                    </div>
+                    <div className="sidebar-menu-second">
                         <ul>
-                            <li>
-                                <Link to="/">
-                                    <span className="las la-logout">
-                                        <FiLogOut />
-                                    </span>
-                                    <span>Logout</span>
-                                </Link>
-                            </li>
+                            <Link to="/">
+                                <FiLogOut />
+                                <span>Logout</span>
+                            </Link>
                         </ul>
                     </div>
                 </div>
