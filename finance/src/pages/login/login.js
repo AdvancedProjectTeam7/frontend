@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
 import logo from "./images/logo-finance2.png";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -29,33 +30,35 @@ function Login() {
     }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-  
-    axios
-      .post("http://localhost:8000/api/auth/login", { email, password })
-      .then((response) => {
-        const data = response.data;
-        console.log("Server response:", data);
-        if (response.status === 200 && data && data.token) {
-          localStorage.setItem("loggedInAdminId", data.id || '');
-          localStorage.setItem("token", data.token || '');
-          localStorage.setItem("email", data.email || '');
-          console.log("Local storage:", localStorage);
-          toast.success("Success Login !", {
-            position: toast.POSITION.TOP_CENTER,
-          });
-        } else {
-          throw new Error("Invalid email or password");
-        }
-      })
-      .catch((error) => {
-        console.error("Error logging in:", error);
-        toast.error("An error occurred while logging in", {
+    console.log("Email:", email);
+    console.log("Password:", password);
+    
+    try {
+      const response = await axios.post("http://localhost:8000/api/auth/login", { email, password });
+      const data = response.data;
+      console.log("Server response:", data);
+      if (data && data.access_token) {
+        localStorage.setItem("loggedInAdminId", data.id || '');
+        localStorage.setItem("token", data.token || '');
+        localStorage.setItem("email", data.email || '');
+        console.log("Local storage:", localStorage);
+        toast.success("Success Login !", {
           position: toast.POSITION.TOP_CENTER,
         });
+    
+      } else {
+        throw new Error("Invalid email or password");
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      toast.error(`${error.response.statusText}`, {
+        position: toast.POSITION.TOP_CENTER,
       });
+    }
   };
+  
 
   return (
     <>
