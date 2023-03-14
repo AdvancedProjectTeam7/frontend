@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const DashBoard = () => {
     return (
-        <>
+        <div>
             <input type="checkbox" name="" id="nav-toggle" />
             <div className="sidebar">
                 <div className="sidebar-brand">
@@ -93,7 +93,7 @@ const DashBoard = () => {
                     </div>
                 </header>
             </div>
-        </>
+        </div>
     );
 };
 
