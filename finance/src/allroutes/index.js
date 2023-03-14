@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Login from "../pages/login/login.js";
 import DashBoard from "../pages/sidebar/dashboard.jsx";
+
 import Admin from "../pages/admins-panel/admin.js"
 import CreateAdmin from "../pages/admins-panel/create-admin.jsx"
 
@@ -14,6 +15,7 @@ class AllRoutes extends Component {
         return (
             <BrowserRouter>
                 <Routes>
+
                     <Route path="/" element={<DashBoard />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/admin" element={<Admin />} />
