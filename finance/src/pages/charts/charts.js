@@ -8,12 +8,11 @@ const Charts = () => {
     <div className="charts">
       <h2>Charts</h2>
       <div className="wrapper">
-        
         <LineGraph />
         <PieGraph />
       </div>
     </div>
   );
-}  ;
+};
 
 export default Charts;
