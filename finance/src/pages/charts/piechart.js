@@ -37,7 +37,7 @@ const PieGraph = () => {
   return (
     <div className="PieGraph" >
       <Pie data={state} options={options}  />
-    </div>
+x    </div>
   );
 };
 export default PieGraph;
