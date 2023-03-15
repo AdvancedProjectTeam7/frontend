@@ -1,0 +1,84 @@
+:root {
+    --main-color: #4f7439;
+    --color-dark: #a5ada5;
+    --text-grey: #8390a2;
+}
+
+.main-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.minor-content {
+    bottom: 0;
+    left: 330px;
+    position: fixed;
+    width: calc(95% - 310px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.transaction-table {
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    position: fixed;
+    left: 350px;
+    width: calc(95% - 310px);
+    border: 1px solid var(--text-grey);
+}
+
+th,
+td {
+    padding: 2rem;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid var(--color-dark);
+}
+
+th {
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: white;
+}
+
+tr:nth-child(even) {
+    background-color: var(--text-grey);
+}
+
+tr:hover {
+    background-color: var(--color-dark);
+    color: white;
+}
+
+button {
+    margin: 0 5px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e5f2d;
+}
+
+#table-toggle {
+    display: none;
+}
+
+#table-toggle:checked ~ .minor-content .transaction-table {
+    left: 80px;
+    width: calc(90% - 80px);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
