@@ -33,22 +33,27 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    
+
     try {
-      const response = await axios.post("http://localhost:8000/api/auth/login", { email, password });
+      const response = await axios.post(
+        "http://localhost:8000/api/auth/login",
+        { email, password }
+      );
       const data = response.data;
       console.log("Server response:", data);
       if (data && data.access_token) {
-        localStorage.setItem("loggedInAdminId", data.id || '');
-        localStorage.setItem("token", data.token || '');
-        localStorage.setItem("email", data.email || '');
-        console.log("Local storage:", localStorage);
-        toast.success("Success Login !", {
+        localStorage.setItem("loggedInAdminId", data.id || "");
+        localStorage.setItem("token", data.token || "");
+        localStorage.setItem("email", data.email || "");
+
+        // use `await` to wait for the toast to complete
+        await toast.success("Success Login !", {
           position: toast.POSITION.TOP_CENTER,
         });
-        navigate("/dashboard");
+
+        setTimeout(() => {
+          navigate("/profit");
+        }, 2000); // wait for 2 seconds before navigating
       } else {
         throw new Error("Invalid email or password");
       }
@@ -59,7 +64,6 @@ function Login() {
       });
     }
   };
-  
 
   return (
     <>

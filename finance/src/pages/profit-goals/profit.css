@@ -1,31 +1,68 @@
-.MuiBox-root-css-gmuwbf {
-  margin-top: 20%;
+.container-profit {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.css-5xe99f-MuiLinearProgress-bar1 {
-  background-color: green !important;
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 20px;
+  width: 50%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.css-eglki6-MuiLinearProgress-root {
-  background-color: rgb(184, 174, 174) !important;
-}
-.css-r40f8v-MuiTypography-root {
-  color: green !important;
-  font-size: 25px !important;
+.card-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.profit-title {
-  position: absolute;
-  margin-left: 24%;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card-body label {
   font-size: 30px;
-  color: green;
-  top: 35%;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
-.profit-edit-icon{
+
+.card-body input {
+  padding: 15px;
+  font-size: 24px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px #ccc;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 25px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: rgb(78, 76, 76);
+  width: 100%;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4f7439;
+  transition: width 0.5s ease-in-out;
+  position: relative;
+}
+
+.progress_label{
+  color: black;
   position: absolute;
-  font-size: 40px;
-  margin-left: 70%;
-  top: 35%;
+  display: flex;
 }

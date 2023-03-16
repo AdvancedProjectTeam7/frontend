@@ -1,55 +1,67 @@
-import * as React from "react";
-import LinearProgress, {LinearProgressProps,} from "@mui/material/LinearProgress";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import {AiOutlineEdit} from "react-icons/ai"
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./profit.css";
 
-function LinearProgressWithLabel(
-  props: LinearProgressProps & { value: number }
-) {
+function ProfitGoalCard() {
+  const [profitGoal, setProfitGoal] = useState(100000);
+  // const [incomeCount, setincomeCount]=useState(0);
+  // const [expenseCount, setexpenseCount]=useState(0);
+
+
+  function handleInputChange(event) {
+    const value = event.target.value;
+    const percentage = (value / 100000) * 100;
+    setProfitGoal(percentage);
+  }
+
+  const progressBarStyle = {
+    width: `${profitGoal}%`,
+  };
+
+  // const getIncome = async (e) => {
+  //   await axios.get("http://localhost:8000/api/category/type/income")
+  //     .then((response) => {
+  //       setincomeCount(response.data);
+  //     });  
+  // };
+  
+  // const getExpense = async (e) => {
+  //   await axios.get("http://localhost:8000/api/category/type/expense")
+  //     .then((response) => {
+  //       setexpenseCount(response.data);
+  //     });
+  // };
+  // useEffect(() => {
+  //   getExpense();
+  //   getIncome();
+  // }, []);
+
   return (
-    <>
-  <div className="title-icon">
-    <div className="profit-title">profit goals</div>
-    <div className="input-profit">
-      <input type="text"/>
+    <div className="container-profit">
+      <div className="card" style={{ width: "50%" }}>
+        <div className="card-header">Profit Goal</div>
+        <div className="card-body">
+          <label htmlFor="profit-input">Enter Profit Goal ($):</label>
+          <input
+            id="profit-input"
+            type="number"
+            value={profitGoal * 1000}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="progress">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={progressBarStyle}
+            >
+             
+             </div>
+             <span className="progress_label"> {`percentage ${profitGoal}%`}</span> 
+        </div>
+      </div>
     </div>
-    <AiOutlineEdit className="profit-edit-icon"/>
-    </div>
-    <Box
-    className="MuiBox-root-css-gmuwbf"
-    >
-      <Box sx={{ width: "50%", mr: 1, backgroundColor:"green" }}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value
-        )}%`}</Typography>
-      </Box>
-    </Box>
-    </>
   );
 }
 
-export default function LinearWithValueLabel() {
-  const [progress, setProgress] = React.useState(10);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 10 : prevProgress + 10
-      );
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return (
-    <Box sx={{ width: "100%" }}>
-      <LinearProgressWithLabel value={progress} />
-    </Box>
-  );
-}
+export default ProfitGoalCard;
