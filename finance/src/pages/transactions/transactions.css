@@ -6,34 +6,44 @@
 
 .main-table {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
+    align-items: center;
+    gap: 15px;
     height: 100vh;
+    margin-left: 310px;
+    transition: all 0.3s ease-in-out;
 }
 
 .minor-content {
-    bottom: 0;
-    left: 330px;
-    position: fixed;
-    width: calc(95% - 310px);
+    width: 85%;
+    min-width: 543px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 5px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+}
+
+.table-container {
+    width: 85%;
+    overflow-y: auto;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
 .transaction-table {
     border-collapse: collapse;
-    margin-bottom: 1rem;
-    position: fixed;
-    left: 350px;
-    width: calc(95% - 310px);
-    border: 1px solid var(--text-grey);
+    width: 100%;
+    min-width: 543px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
 }
 
 th,
 td {
-    padding: 2rem;
+    padding: 1rem;
     text-align: left;
     vertical-align: top;
     border-top: 1px solid var(--color-dark);
@@ -55,7 +65,6 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: var(--color-dark);
-    color: white;
 }
 
 button {
@@ -64,7 +73,7 @@ button {
     color: white;
     border: none;
     padding: 0.5rem;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -72,13 +81,12 @@ button:hover {
     background-color: #3e5f2d;
 }
 
-#table-toggle {
-    display: none;
+#nav-toggle:checked ~ .table-container,
+#nav-toggle:checked ~ .minor-content {
+    width: 96%;
+    transition: all 0.3s ease-in-out;
 }
 
-#table-toggle:checked ~ .minor-content .transaction-table {
-    left: 80px;
-    width: calc(90% - 80px);
-    z-index: 1000;
-    transition: all 0.3s ease-in-out;
+.main-table:has(#nav-toggle:checked) {
+    margin-left: 80px;
 }
