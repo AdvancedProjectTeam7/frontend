@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./dashboard.css";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineBars, AiOutlineTransaction } from "react-icons/ai";
@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import image from "../images/logo.png";
 
 const DashBoard = () => {
+    const [isActive, setIsActive] = useState("dashboard");
+
     return (
         <>
             <input type="checkbox" name="" id="nav-toggle" />
@@ -22,19 +24,118 @@ const DashBoard = () => {
                 <div className="sidebar-menu">
                     <div className="sidebar-menu-first">
                         <ul>
-                            <Link to="/dashboard" className="active">
+                            <Link
+                                to="/dashboard"
+                                style={{
+                                    backgroundColor:
+                                        isActive === "dashboard"
+                                            ? "#fff"
+                                            : "#4f7439",
+                                    color:
+                                        isActive === "dashboard"
+                                            ? "#4f7439"
+                                            : "#fff",
+                                    padding:
+                                        isActive === "dashboard"
+                                            ? "1rem 1rem"
+                                            : "1rem 1rem",
+                                    borderRadius:
+                                        isActive === "dashboard" ? "39px" : "0",
+                                    transition:
+                                        isActive === "dashboard"
+                                            ? "all 0.3s ease-in-out"
+                                            : "none",
+                                }}
+                                onClick={() => {
+                                    setIsActive("dashboard");
+                                    console.log(setIsActive);
+                                }}
+                            >
                                 <SiHomeassistantcommunitystore />
                                 <span>Dashboard</span>
                             </Link>
-                            <Link to="/admins">
+                            <Link
+                                to="/admins"
+                                style={{
+                                    backgroundColor:
+                                        isActive === "admins"
+                                            ? "#fff"
+                                            : "#4f7439",
+                                    color:
+                                        isActive === "admins"
+                                            ? "#4f7439"
+                                            : "#fff",
+                                    padding:
+                                        isActive === "admins"
+                                            ? "1rem 1rem"
+                                            : "1rem 1rem",
+                                    borderRadius:
+                                        isActive === "admins" ? "39px" : "0",
+                                    transition:
+                                        isActive === "admins"
+                                            ? "all 0.3s ease-in-out"
+                                            : "none",
+                                }}
+                                onClick={() => setIsActive("admins")}
+                            >
                                 <FiUsers />
                                 <span>Admins</span>
                             </Link>
-                            <Link to="/categories">
+                            <Link
+                                to="/categories"
+                                style={{
+                                    backgroundColor:
+                                        isActive === "categories"
+                                            ? "#fff"
+                                            : "#4f7439",
+                                    color:
+                                        isActive === "categories"
+                                            ? "#4f7439"
+                                            : "#fff",
+                                    padding:
+                                        isActive === "categories"
+                                            ? "1rem 1rem"
+                                            : "1rem 1rem",
+                                    borderRadius:
+                                        isActive === "categories"
+                                            ? "39px"
+                                            : "0",
+                                    transition:
+                                        isActive === "categories"
+                                            ? "all 0.3s ease-in-out"
+                                            : "none",
+                                }}
+                                onClick={() => setIsActive("categories")}
+                            >
                                 <BiCategory />
                                 <span>Categories</span>
                             </Link>
-                            <Link to="/transactions">
+                            <Link
+                                to="/transactions"
+                                style={{
+                                    backgroundColor:
+                                        isActive === "transactions"
+                                            ? "#fff"
+                                            : "#4f7439",
+                                    color:
+                                        isActive === "transactions"
+                                            ? "#4f7439"
+                                            : "#fff",
+                                    padding:
+                                        isActive === "transactions"
+                                            ? "1rem 1rem"
+                                            : "1rem 1rem",
+                                    borderRadius:
+                                        isActive === "transactions"
+                                            ? "39px"
+                                            : "0",
+                                    transition:
+                                        isActive === "transactions"
+                                            ? "all 0.3s ease-in-out"
+                                            : "none",
+                                }}
+                                onClick={() => setIsActive("transactions")}
+                            >
                                 <AiOutlineTransaction />
                                 <span>Transactions</span>
                             </Link>

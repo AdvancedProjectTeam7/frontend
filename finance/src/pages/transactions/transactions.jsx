@@ -33,6 +33,8 @@ function Transactions() {
         category_id: "",
         date: "",
         currency: "$",
+        start_date: "",
+        end_date: "",
     });
 
     const handleAddTransaction = () => {
@@ -52,6 +54,8 @@ function Transactions() {
                     category_id: "",
                     date: "",
                     currency: "$",
+                    start_date: "",
+                    end_date: "",
                 });
             })
             .catch((error) => console.error(`Error:${error}`));
@@ -92,6 +96,9 @@ function Transactions() {
                                 <th>ID</th>
                                 <th>Category</th>
                                 <th>Date</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Duration</th>
                                 <th>Description</th>
                                 <th>Amount</th>
                                 <th>Currency</th>
@@ -105,6 +112,9 @@ function Transactions() {
                                     <td>{transaction.id}</td>
                                     <td>{transaction.category_id}</td>
                                     <td>{transaction.date}</td>
+                                    <td>{transaction.recurring?.start_date}</td>
+                                    <td>{transaction.recurring?.end_date}</td>
+                                    <td>{transaction.recurring?.duration}</td>
                                     <td>
                                         {editingTransaction ===
                                         transaction.id ? (
@@ -245,8 +255,7 @@ function Transactions() {
                     </label>
                     <label>
                         Description:{" "}
-                        <input
-                            type="text"
+                        <select
                             value={newTransaction.description}
                             onChange={(event) =>
                                 setNewTransaction({
@@ -254,7 +263,12 @@ function Transactions() {
                                     description: event.target.value,
                                 })
                             }
-                        />
+                        >
+                            <option type="date" value="income">
+                                income
+                            </option>
+                            <option value="expense">expense</option>
+                        </select>
                     </label>
                     <label>
                         Amount:{" "}
