@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import DashBoard from "../sidebar/dashboard";
 import "./transactions.css";
 import { Pagination } from "antd";
 import axios from "axios";
@@ -86,8 +85,7 @@ function Transactions() {
 
     return (
         <>
-            <div className="main-table">
-                <DashBoard />
+                <>
                 <input type="checkbox" name="" id="nav-toggle" />
                 <div className="table-container">
                     <table className="transaction-table">
@@ -315,7 +313,7 @@ function Transactions() {
                     </label>
                     <button onClick={handleAddTransaction}>Add</button>
                 </div>
-            </div>
+                </>
         </>
     );
 }

@@ -1,16 +1,15 @@
-import React, { useState } from "react";
 import "./dashboard.css";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineBars, AiOutlineTransaction } from "react-icons/ai";
 import { FiLogOut, FiUsers } from "react-icons/fi";
 import { BiCategory } from "react-icons/bi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import image from "../images/logo.png";
 
 const DashBoard = () => {
-    const [isActive, setIsActive] = useState("dashboard");
-
+    const location = useLocation();
+    console.log(location, window.location.pathname);
     return (
         <>
             <input type="checkbox" name="" id="nav-toggle" />
@@ -26,115 +25,92 @@ const DashBoard = () => {
                         <ul>
                             <Link
                                 to="/dashboard"
-                                style={{
-                                    backgroundColor:
-                                        isActive === "dashboard"
-                                            ? "#fff"
-                                            : "#4f7439",
-                                    color:
-                                        isActive === "dashboard"
-                                            ? "#4f7439"
-                                            : "#fff",
-                                    padding:
-                                        isActive === "dashboard"
-                                            ? "1rem 1rem"
-                                            : "1rem 1rem",
-                                    borderRadius:
-                                        isActive === "dashboard" ? "39px" : "0",
-                                    transition:
-                                        isActive === "dashboard"
-                                            ? "all 0.3s ease-in-out"
-                                            : "none",
-                                }}
-                                onClick={() => {
-                                    setIsActive("dashboard");
-                                    console.log(setIsActive);
-                                }}
+                                style={
+                                    location.pathname === "/dashboard"
+                                        ? {
+                                              backgroundColor: "#fff",
+                                              color: "#4f7439",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "39px",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                        : {
+                                              backgroundColor: "#4f7439",
+                                              color: "#fff",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "0",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                }
                             >
                                 <SiHomeassistantcommunitystore />
                                 <span>Dashboard</span>
                             </Link>
                             <Link
                                 to="/admins"
-                                style={{
-                                    backgroundColor:
-                                        isActive === "admins"
-                                            ? "#fff"
-                                            : "#4f7439",
-                                    color:
-                                        isActive === "admins"
-                                            ? "#4f7439"
-                                            : "#fff",
-                                    padding:
-                                        isActive === "admins"
-                                            ? "1rem 1rem"
-                                            : "1rem 1rem",
-                                    borderRadius:
-                                        isActive === "admins" ? "39px" : "0",
-                                    transition:
-                                        isActive === "admins"
-                                            ? "all 0.3s ease-in-out"
-                                            : "none",
-                                }}
-                                onClick={() => setIsActive("admins")}
+                                style={
+                                    location.pathname === "/admins"
+                                        ? {
+                                              backgroundColor: "#fff",
+                                              color: "#4f7439",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "39px",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                        : {
+                                              backgroundColor: "#4f7439",
+                                              color: "#fff",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "0",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                }
                             >
                                 <FiUsers />
                                 <span>Admins</span>
                             </Link>
                             <Link
                                 to="/categories"
-                                style={{
-                                    backgroundColor:
-                                        isActive === "categories"
-                                            ? "#fff"
-                                            : "#4f7439",
-                                    color:
-                                        isActive === "categories"
-                                            ? "#4f7439"
-                                            : "#fff",
-                                    padding:
-                                        isActive === "categories"
-                                            ? "1rem 1rem"
-                                            : "1rem 1rem",
-                                    borderRadius:
-                                        isActive === "categories"
-                                            ? "39px"
-                                            : "0",
-                                    transition:
-                                        isActive === "categories"
-                                            ? "all 0.3s ease-in-out"
-                                            : "none",
-                                }}
-                                onClick={() => setIsActive("categories")}
+                                style={
+                                    location.pathname === "/categories"
+                                        ? {
+                                              backgroundColor: "#fff",
+                                              color: "#4f7439",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "39px",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                        : {
+                                              backgroundColor: "#4f7439",
+                                              color: "#fff",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "0",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                }
                             >
                                 <BiCategory />
                                 <span>Categories</span>
                             </Link>
                             <Link
                                 to="/transactions"
-                                style={{
-                                    backgroundColor:
-                                        isActive === "transactions"
-                                            ? "#fff"
-                                            : "#4f7439",
-                                    color:
-                                        isActive === "transactions"
-                                            ? "#4f7439"
-                                            : "#fff",
-                                    padding:
-                                        isActive === "transactions"
-                                            ? "1rem 1rem"
-                                            : "1rem 1rem",
-                                    borderRadius:
-                                        isActive === "transactions"
-                                            ? "39px"
-                                            : "0",
-                                    transition:
-                                        isActive === "transactions"
-                                            ? "all 0.3s ease-in-out"
-                                            : "none",
-                                }}
-                                onClick={() => setIsActive("transactions")}
+                                style={
+                                    location.pathname === "/transactions"
+                                        ? {
+                                              backgroundColor: "#fff",
+                                              color: "#4f7439",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "39px",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                        : {
+                                              backgroundColor: "#4f7439",
+                                              color: "#fff",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "0",
+                                              transition: "all 0.3s ease-out",
+                                          }
+                                }
                             >
                                 <AiOutlineTransaction />
                                 <span>Transactions</span>

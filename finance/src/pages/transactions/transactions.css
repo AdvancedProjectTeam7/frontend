@@ -46,6 +46,7 @@ td {
     padding: 1rem;
     text-align: left;
     vertical-align: top;
+    transition: all 0.3s ease-in-out;
     border-top: 1px solid var(--color-dark);
 }
 
@@ -88,5 +89,6 @@ button:hover {
 }
 
 .main-table:has(#nav-toggle:checked) {
+    transition: all 0.3s ease-in-out;
     margin-left: 80px;
 }
