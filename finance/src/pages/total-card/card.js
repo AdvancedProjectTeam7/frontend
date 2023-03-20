@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./card.css";
 
 const Card = ({ title, value, icon, type }) => {
@@ -23,36 +24,75 @@ const Card = ({ title, value, icon, type }) => {
 };
 
 const Cards = () => {
-  const income = 1000;
-  const expenses = 350;
-  const total = income - expenses;
+  const [income, setIncome] = useState(0);
+  const [expenses, setExpenses] = useState(0);
+  const [total, setTotal] = useState(0);
 
-  const cardData = [
-    {
-      title: "Income",
-      value: `+${income} $`,
-      type: "income",
-    },
-    {
-      title: "Expense",
-      value: `-${expenses} $`,
-      type: "expenses",
-    },
-    {
-      title: "Total",
-      value: `${total} $`,
-      type: total >= 0 ? "income" : "expenses",
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/transactions/income");
+        const responses = await axios.get("http://localhost:8000/api/transactions/expense");
+        const transactions = response.data.data;
+        const transaction = responses.data.data;
+        
+        let incomeAmount = 0;
+        let expensesAmount = 0;
+  
+        // Calculate the total income amount
+        for (let i = 0; i < transactions.length; i++) {
+          incomeAmount += transactions[i].amount;
+        }
+  
+        // Calculate the total expenses amount
+        for (let i = 0; i < transaction.length; i++) {
+          expensesAmount += transaction[i].amount;
+        }
+  
+        setIncome(incomeAmount);
+        setExpenses(expensesAmount);
+        setTotal(incomeAmount - expensesAmount);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const incomeData = {
+    title: "Income",
+    value: `+${income} $`,
+    type: "income",
+    icon: "fa fa-arrow-up",
+  };
+  
+  const expensesData = {
+    title: "Expenses",
+    value: `-${expenses} $`,
+    type: "expenses",
+    icon: "fa fa-arrow-down",
+    
+  };
+  
+  const totalData = {
+    title: "Total",
+    value: `${total} $`,
+    type: total >= 0 ? "income" : "expenses",
+    icon: "fa fa-line-chart",
+  };
 
   return (
     <div className="card-container">
       <div className="cards">
-        {cardData.map((card, index) => (
-          <div key={index} className="cards-1">
-            <Card {...card} />
-          </div>
-        ))}
+        <div className="cards-1">
+          <Card {...incomeData} />
+        </div>
+        <div className="cards-1">
+          <Card {...expensesData} />
+        </div>
+        <div className="cards-1">
+          <Card {...totalData} />
+        </div>
       </div>
     </div>
   );

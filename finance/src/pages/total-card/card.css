@@ -1,16 +1,15 @@
 .card {
-    box-shadow: 3px 5px 10px #ada5a5;
     background-color: #dbd6d6;
     border-radius: 30px;
     padding: 20px;
-    width: 45%;
-    max-width: 500px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 140px;
+    justify-content: space-around;
   }
-  
+
   .card.income {
     background-color: #c9f7c5;
   }
@@ -33,6 +32,10 @@
   
   .card.expenses h3 {
     color: red;
+  }
+
+  .card:hover{
+    box-shadow: 3px 5px 10px #ada5a5;
   }
   
   .cards {

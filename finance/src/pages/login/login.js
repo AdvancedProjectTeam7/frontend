@@ -40,7 +40,7 @@ function Login() {
         { email, password }
       );
       const data = response.data;
-      console.log("Server response:", data);
+    //   console.log("Server response:", data);
       if (data && data.access_token) {
         localStorage.setItem("loggedInAdminId", data.id || "");
         localStorage.setItem("token", data.token || "");
@@ -52,7 +52,7 @@ function Login() {
         });
 
         setTimeout(() => {
-          navigate("/profit");
+          navigate("/card");
         }, 2000); // wait for 2 seconds before navigating
       } else {
         throw new Error("Invalid email or password");
