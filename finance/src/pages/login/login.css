@@ -1,160 +1,160 @@
 .logo1 {
-  margin-top: 100px;
-  width: 430px;
-  height: 305px;
+    margin-top: 100px;
+    width: 430px;
+    height: 305px;
 }
 
 .logo-title {
-  font-size: 30px;
-  color: #a5ada5;
+    font-size: 30px;
+    color: #a5ada5;
 }
 .login-title {
-  color: #4f7439;
-  width: 100%;
-  text-align: center;
-  font-size: 36px;
+    color: #4f7439;
+    width: 100%;
+    text-align: center;
+    font-size: 36px;
 }
 
 .container {
-  display: flex;
-  width: 75%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 3px 3px 3px #00000055;
+    display: flex;
+    width: 75%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 3px 3px 3px #00000055;
 }
 
 .left-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  background-color: #4f7439;
-  padding: 5% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: #4f7439;
+    padding: 5% 0;
 }
 
 .right-side {
-  width: 50%;
-  background-color: white;
-  display: flex;
-  align-items: center;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
 }
 
 .img1 {
-  margin-left: 0px;
+    margin-left: 0px;
 }
 .login-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
 }
 .login-form {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
 }
 
 /* input email password*/
 .email,
 .pass {
-  color: #4f7439;
-  position: absolute;
-  font-size: 22px;
-  left: 0;
-  top: 0;
-  transition: 0.2s all ease-in;
+    color: #4f7439;
+    position: absolute;
+    font-size: 22px;
+    left: 0;
+    top: 0;
+    transition: 0.2s all ease-in;
 }
 
 .email-wrapper,
 .pass-wrapper {
-  width: 70%;
-  height: 40px;
-  position: relative;
-  margin: 30px auto;
+    width: 70%;
+    height: 40px;
+    position: relative;
+    margin: 30px auto;
 }
 
 .input-email,
 .input-pass {
-  font-size: 20px;
-  width: 100%;
-  border: 2px solid transparent;
-  border-bottom-color: #3a7e13;
-  padding: 0.2rem 0;
-  outline: none;
-  background-color: transparent;
-  color: #333533;
+    font-size: 20px;
+    width: 100%;
+    border: 2px solid transparent;
+    border-bottom-color: #3a7e13;
+    padding: 0.2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #333533;
 }
 
 .input-email:focus + .email,
 .input-pass:focus + .pass {
-  font-size: 16px;
-  transform: translate(0px, -20px);
+    font-size: 16px;
+    transform: translate(0px, -20px);
 }
 
 .input-filled {
-  transform: translateY(-20px);
-  font-size: 12px;
-  color: #666;
-  transition: all 0.2s ease-in-out;
-  font-size: 16px;
+    transform: translateY(-20px);
+    font-size: 12px;
+    color: #666;
+    transition: all 0.2s ease-in-out;
+    font-size: 16px;
 }
 
 /* button */
 .btn-login {
-  color: #4f7439;
-  background: white;
-  outline: 0;
-  border: 0;
-  margin: 25px auto;
-  width: 140px;
-  height: 40px;
-  font-size: 22px;
-  box-shadow: 2px 2px 0px #4f7439;
-  cursor: pointer;
-  transition: 0.3s all ease-in-out;
+    color: #4f7439;
+    background: white;
+    outline: 0;
+    border: 0;
+    margin: 25px auto;
+    width: 140px;
+    height: 40px;
+    font-size: 22px;
+    box-shadow: 2px 2px 0px #4f7439;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
 }
 
 .btn-login:hover {
-  color: white;
-  background: #4f7439;
-  box-shadow: 0;
+    color: white;
+    background: #4f7439;
+    box-shadow: 0;
 }
 
 .my-toast-container {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 @media (max-width: 992px) and (min-width: 280px) {
-  .logo-title {
-    display: none;
-  }
-  .logo1 {
-    width: 250px;
-    height: 180px;
-  }
-  .left-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-  }
-  .email-wrapper,
-  .pass-wrapper {
-    width: 100%;
-  }
-  .container {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-  }
+    .logo-title {
+        display: none;
+    }
+    .logo1 {
+        width: 250px;
+        height: 180px;
+    }
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+    }
+    .email-wrapper,
+    .pass-wrapper {
+        width: 100%;
+    }
+    .container {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
 }
