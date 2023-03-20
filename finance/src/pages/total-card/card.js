@@ -31,24 +31,28 @@ const Cards = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/transactions/income");
-        const responses = await axios.get("http://localhost:8000/api/transactions/expense");
+        const response = await axios.get(
+          "http://localhost:8000/api/transactions/income"
+        );
+        const responses = await axios.get(
+          "http://localhost:8000/api/transactions/expense"
+        );
         const transactions = response.data.data;
         const transaction = responses.data.data;
-        
+
         let incomeAmount = 0;
         let expensesAmount = 0;
-  
+
         // Calculate the total income amount
         for (let i = 0; i < transactions.length; i++) {
           incomeAmount += transactions[i].amount;
         }
-  
+
         // Calculate the total expenses amount
         for (let i = 0; i < transaction.length; i++) {
           expensesAmount += transaction[i].amount;
         }
-  
+
         setIncome(incomeAmount);
         setExpenses(expensesAmount);
         setTotal(incomeAmount - expensesAmount);
@@ -65,15 +69,14 @@ const Cards = () => {
     type: "income",
     icon: "fa fa-arrow-up",
   };
-  
+
   const expensesData = {
     title: "Expenses",
     value: `-${expenses} $`,
     type: "expenses",
     icon: "fa fa-arrow-down",
-    
   };
-  
+
   const totalData = {
     title: "Total",
     value: `${total} $`,

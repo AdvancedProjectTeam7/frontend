@@ -1,55 +1,53 @@
 .card {
-    background-color: #dbd6d6;
-    border-radius: 30px;
-    padding: 20px;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 140px;
-    justify-content: space-around;
-  }
+  background-color: #dbd6d6;
+  border-radius: 30px;
+  padding: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 140px;
+  justify-content: space-around;
+}
 
-  .card.income {
-    background-color: #c9f7c5;
-  }
-  
-  .card.expenses {
-    background-color: #ffb6b6;
-  }
-  
-  .card.income h2 {
-    color: green;
-  }
-  
-  .card.expenses h2 {
-    color: red;
-  }
+.card.income {
+  background-color: #c9f7c5;
+}
 
-  .card.income h3 {
-    color: green;
-  }
-  
-  .card.expenses h3 {
-    color: red;
-  }
+.card.expenses {
+  background-color: #ffb6b6;
+}
 
-  .card:hover{
-    box-shadow: 3px 5px 10px #ada5a5;
-  }
-  
-  .cards {
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .cards-1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 25%;
-  }
-  
-  
+.card.income h2 {
+  color: green;
+}
+
+.card.expenses h2 {
+  color: red;
+}
+
+.card.income h3 {
+  color: green;
+}
+
+.card.expenses h3 {
+  color: red;
+}
+
+.card:hover {
+  box-shadow: 3px 5px 10px #ada5a5;
+}
+
+.cards {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+}

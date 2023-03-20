@@ -61,7 +61,7 @@
   position: relative;
 }
 
-.progress_label{
+.progress_label {
   color: black;
   position: absolute;
   display: flex;

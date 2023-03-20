@@ -40,7 +40,7 @@ function Login() {
         { email, password }
       );
       const data = response.data;
-    //   console.log("Server response:", data);
+      //   console.log("Server response:", data);
       if (data && data.access_token) {
         localStorage.setItem("loggedInAdminId", data.id || "");
         localStorage.setItem("token", data.token || "");
