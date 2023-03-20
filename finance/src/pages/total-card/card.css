@@ -20,10 +20,12 @@
 
 .card.income h2 {
   color: green;
+  font-size: 35px;
 }
 
 .card.expenses h2 {
   color: red;
+  font-size: 35px;
 }
 
 .card.income h3 {
