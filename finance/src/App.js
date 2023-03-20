@@ -1,18 +1,15 @@
-import React , {Component} from "react";
-import {BrowserRouter} from "react-router-dom";
+import React from 'react'
+// import {BrowserRouter} from "react-router-dom";
 import AllRoutes  from "./allroutes/index.js"
-import DashBoard from "./pages/sidebar/dashboard.jsx";
+// import Dashboard from "./pages/sidebar/dashboard.js"
 
 
-class App extends Component{
-  render (){
-    return(
-      <>
-                
-
-       <AllRoutes/>
-
+function App() {
+  return (
+    <>
+      <AllRoutes />
       </>
-       
-    )}}
-export default App;
+  )
+}
+
+export default App
