@@ -67,7 +67,6 @@ function Login() {
 
   return (
     <>
-      <ToastContainer className="my-toast-container" />
       <div className="container">
         <div className="left-side">
           <img className="logo1" src={logo} alt="logo" />
