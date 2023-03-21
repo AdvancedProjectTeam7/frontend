@@ -3,14 +3,14 @@ import {Line} from "react-chartjs-2";
 import {Chart as ChartJS} from "chart.js/auto";
 const LineGraph = () => {
   const state = {
-    labels: ["January", "February", "March", "April", "May"],
+    labels: ["January", "February", "March", "April", "May","June","July","August","September","October","November","December"],
     datasets: [
       {
         label: "incomes",
         backgroundcolor: "rgba(75,192,192,1)",
         bordercolor: "rgba(0,0,0,1)",
         borderwidth: 2,
-        data: [65, 45, 123, 42, 43],
+        data: [65, 45, 123, 42, 43 ,65, 45, 123, 42, 43,123, 42],
       },
     ],
   };

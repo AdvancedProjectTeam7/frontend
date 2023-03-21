@@ -43,7 +43,7 @@
 
 th,
 td {
-    padding: 1rem;
+    padding: 1rem 3rem;
     text-align: left;
     vertical-align: top;
     transition: all 0.3s ease-in-out;

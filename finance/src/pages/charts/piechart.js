@@ -3,7 +3,20 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 const PieGraph = () => {
   const state = {
-    labels: ["January", "February", "March", "April", "May"],
+    labels: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     datasets: [
       {
         label: "Rainfall",
@@ -13,10 +26,16 @@ const PieGraph = () => {
           "#2FDE00",
           "#00A6B4",
           "#6800B4",
+          "#800000",
+          "#FF0000",
+          "#0000FF",
+          "#FFFF00",
+          "#00ffff",
+          "#000000",
         ],
         bordercolor: "rgba(0,0,0,1)",
         borderwidth: 2,
-        data: [65, 45, 123, 42, 43],
+        data: [65, 45, 123, 42, 43, 65, 45, 123, 42, 43, 123, 42],
       },
     ],
   };

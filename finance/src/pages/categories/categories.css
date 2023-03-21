@@ -1,0 +1,16 @@
+.label {
+  display: block;
+}
+
+.label input {
+    display: block;
+}
+
+.addButton {
+    width: 100%;
+    line-height: 2;
+    margin:  0 !important;
+}   
+table{
+    width: 100% !important;
+}
