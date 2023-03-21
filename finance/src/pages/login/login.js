@@ -31,39 +31,39 @@ function Login() {
     }));
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "http://localhost:8001/api/auth/login",
-        { email, password }
-      );
-      const data = response.data;
-      //   console.log("Server response:", data);
-      if (data && data.access_token) {
-        localStorage.setItem("loggedInAdminId", data.id || "");
-        localStorage.setItem("token", data.access_token || "");
-        localStorage.setItem("email", data.email || "");
+        try {
+            const response = await axios.post(
+                "http://localhost:8000/api/auth/login",
+                { email, password }
+            );
+            const data = response.data;
+            //   console.log("Server response:", data);
+            if (data && data.access_token) {
+                localStorage.setItem("loggedInAdminId", data.id || "");
+                localStorage.setItem("token", data.access_token || "");
+                localStorage.setItem("email", data.email || "");
 
-        // use `await` to wait for the toast to complete
-        await toast.success("Success Login !", {
-          position: toast.POSITION.TOP_CENTER,
-        });
+                // use `await` to wait for the toast to complete
+                await toast.success("Success Login !", {
+                    position: toast.POSITION.TOP_CENTER,
+                });
 
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 2000); // wait for 2 seconds before navigating
-      } else {
-        throw new Error("Invalid email or password");
-      }
-    } catch (error) {
-      console.error("Error logging in:", error);
-      toast.error(`${error.response.statusText}`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    }
-  };
+                setTimeout(() => {
+                    navigate("/dashboard");
+                }, 2000); // wait for 2 seconds before navigating
+            } else {
+                throw new Error("Invalid email or password");
+            }
+        } catch (error) {
+            console.error("Error logging in:", error);
+            toast.error(`${error.response.statusText}`, {
+                position: toast.POSITION.TOP_CENTER,
+            });
+        }
+    };
 
   return (
     <>

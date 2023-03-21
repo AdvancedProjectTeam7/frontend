@@ -10,12 +10,21 @@ function Transactions() {
     const [totalTransactions, setTotalTransactions] = useState(0);
     const url = `http://127.0.0.1:8000/api/`;
 
+    const handelDeleteTransaction = (id) => {
+        axios
+            .delete(`${url}transactions/delete/${id}`)
+            .then((response) => {
+                setTransactions(response.data.data);
+                console.log("Transaction successfully deleted.");
+            })
+            .catch((error) => console.error(`Error:${error}`));
+    };
+
     const handelGetTransactions = useCallback(() => {
         axios
             .get(`${url}transactions/list?page=${currentPage}`)
             .then((response) => {
                 setTotalTransactions(response.data.data.total);
-                console.log(response.data);
                 setTransactions(response.data.data.data);
             })
             .catch((error) => console.error(`Error:${error}`));
@@ -29,47 +38,68 @@ function Transactions() {
     const [newTransaction, setNewTransaction] = useState({
         description: "",
         amount: "",
-        title: "fixed",
+        title: "",
         category_id: "",
         date: "",
         currency: "$",
-        start_date: "",
-        end_date: "",
     });
 
     const handleAddTransaction = () => {
-        console.log(transactions.splice(-1));
-        axios
-            .post(
-                "http://127.0.0.1:8000/api/transactions/create/fixed",
-                newTransaction
-            )
-            .then((response) => {
-                console.log(response);
-                setTransactions([response.data.data, ...transactions]);
-                setNewTransaction({
-                    description: "",
-                    amount: "",
-                    title: "fixed",
-                    category_id: "",
-                    date: "",
-                    currency: "$",
-                    start_date: "",
-                    end_date: "",
-                });
-            })
-            .catch((error) => console.error(`Error:${error}`));
+        if (
+            newTransaction.start_date &&
+            newTransaction.end_date &&
+            newTransaction.duration &&
+            newTransaction.interval
+        ) {
+            axios
+                .post(`${url}transactions/create/recurring`, newTransaction)
+                .then((response) => {
+                    setTransactions([response.data.data, ...transactions]);
+                    setNewTransaction({
+                        description: "",
+                        amount: "",
+                        title: "",
+                        category_id: "",
+                        currency: "$",
+                        start_date: "",
+                        end_date: "",
+                        duration: "",
+                        interval: "",
+                    });
+                })
+                .catch((error) => console.error(`Error:${error}`));
+        } else {
+            axios
+                .post(`${url}transactions/create/fixed`, newTransaction)
+                .then((response) => {
+                    setTransactions([response.data.data, ...transactions]);
+                    setNewTransaction({
+                        description: "",
+                        amount: "",
+                        title: "",
+                        category_id: "",
+                        date: "",
+                        currency: "$",
+                    });
+                })
+                .catch((error) => console.error(`Error:${error}`));
+        }
     };
 
     const handleEditTransaction = (id, editedTransaction) => {
-        const updatedTransactions = transactions.map((transaction) => {
-            if (transaction.id === id) {
-                return editedTransaction;
-            } else {
-                return transaction;
-            }
-        });
-        setTransactions(updatedTransactions);
+        axios
+            .put(`${url}transactions/edit/fixed/${id}`, editedTransaction)
+            .then((res) => {
+                const updatedTransactions = transactions.map((transaction) => {
+                    if (transaction.id === id) {
+                        return editedTransaction;
+                    } else {
+                        return transaction;
+                    }
+                });
+                setTransactions(updatedTransactions);
+            })
+            .catch((error) => console.error(`Error:${error}`));
     };
 
     const handleSaveTransation = (id, editedTransaction) => {
@@ -93,7 +123,6 @@ function Transactions() {
                     <table className="transaction-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Category</th>
                                 <th>Date</th>
                                 <th>Start</th>
@@ -107,9 +136,8 @@ function Transactions() {
                             </tr>
                         </thead>
                         <tbody>
-                            {transactions.map((transaction) => (
-                                <tr key={transaction.id}>
-                                    <td>{transaction.id}</td>
+                            {transactions.map((transaction, index) => (
+                                <tr key={index}>
                                     <td>{transaction.category_id}</td>
                                     <td>{transaction.date}</td>
                                     <td>{transaction.recurring?.start_date}</td>
@@ -198,17 +226,11 @@ function Transactions() {
                                                     Edit
                                                 </button>
                                                 <button
-                                                    onClick={() => {
-                                                        const updatedTransactions =
-                                                            transactions.filter(
-                                                                (t) =>
-                                                                    t.id !==
-                                                                    transaction.id
-                                                            );
-                                                        setTransactions(
-                                                            updatedTransactions
-                                                        );
-                                                    }}
+                                                    onClick={() =>
+                                                        handelDeleteTransaction(
+                                                            transaction.id
+                                                        )
+                                                    }
                                                 >
                                                     Delete
                                                 </button>
@@ -253,6 +275,58 @@ function Transactions() {
                             }
                         />
                     </label>
+                    <label htmlFor="">
+                        Start:{" "}
+                        <input
+                            type="date"
+                            value={newTransaction.start_date}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    start_date: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        End:{" "}
+                        <input
+                            type="date"
+                            value={newTransaction.end_date}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    end_date: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        Duration:{" "}
+                        <input
+                            type="number"
+                            value={newTransaction.duration}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    duration: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        Interval:{" "}
+                        <input
+                            type="text"
+                            value={newTransaction.interval}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    interval: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
                     <label>
                         Description:{" "}
                         <select
@@ -264,9 +338,8 @@ function Transactions() {
                                 })
                             }
                         >
-                            <option type="date" value="income">
-                                income
-                            </option>
+                            <option style={{ display: "none" }}>select</option>
+                            <option value="income">income</option>
                             <option value="expense">expense</option>
                         </select>
                     </label>
@@ -295,7 +368,9 @@ function Transactions() {
                             }
                         >
                             <option value="Dollar">$</option>
-                            <option value="Lira">L.L.</option>
+                            <option value="Lira" disabled>
+                                L.L.
+                            </option>
                         </select>
                     </label>
                     <label>
@@ -309,11 +384,14 @@ function Transactions() {
                                 })
                             }
                         >
+                            <option style={{ display: "none" }}>select</option>
                             <option value="fixed">Fixed</option>
                             <option value="recurrening">Recurrening</option>
                         </select>
                     </label>
-                    <button onClick={handleAddTransaction}>Add</button>
+                    <div>
+                        <button onClick={handleAddTransaction}>Add</button>
+                    </div>
                 </div>
             </>
         </>

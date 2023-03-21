@@ -19,6 +19,7 @@
     width: 85%;
     min-width: 543px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;

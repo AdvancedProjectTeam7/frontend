@@ -20,14 +20,14 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 310px;
+    width: 320px;
     position: fixed;
     left: 0;
     height: 100vh;
     background: var(--main-color);
     z-index: 100;
     transition: 0.3s width ease-in-out;
-    gap: 50px;
+    gap: 60px;
 }
 
 .sidebar-brand {
@@ -55,9 +55,9 @@
 .sidebar-menu a {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 8px;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transition: all 0.3s ease-in-out;
     padding: 1rem 1rem;
 }
@@ -65,9 +65,10 @@
 .sidebar-menu-first ul {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 40px;
+    justify-content: center;
     transition: all 0.3s ease-in-out;
-    height: 40vh;
+    height: 50vh;
 }
 
 #nav-toggle:checked + .sidebar {
@@ -79,19 +80,10 @@
     display: none;
 }
 
-.sidebar-menu a:active {
-    background: #fff;
-    padding: 1rem 1rem;
-    color: var(--main-color);
-    border-radius: 39px;
-    transition: all 0.3s ease-in-out;
-}
-
 #nav-toggle:checked ~ .main-content header {
     left: 80px;
     width: calc(100% - 80px);
     z-index: 1000;
-    transition: all 0.3s ease-in-out;
 }
 
 header {
@@ -101,8 +93,8 @@ header {
     padding: 1rem 1.5rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
-    left: 310px;
-    width: calc(100% - 310px);
+    left: 320px;
+    width: calc(100% - 320px);
     top: 0;
     z-index: 100;
     transition: all 0.3s ease-in-out;
@@ -123,28 +115,6 @@ header h2 {
     display: flex;
     align-self: center;
     font-size: 1.7rem;
-}
-
-.search-wrapper {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 30%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
-}
-
-.search-wrapper span {
-    display: inline-block;
-    padding: 0rem 1rem;
-}
-
-.search-wrapper input {
-    height: 100%;
-    padding: 0.5rem;
-    border: none;
-    outline: none;
 }
 
 .user-wrapper {
