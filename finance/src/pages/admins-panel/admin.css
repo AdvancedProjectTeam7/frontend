@@ -28,7 +28,7 @@
 }
 
 .admin-table-container {
-    width: 100%;
+    /* width: 100%; */
     overflow-y: auto;
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);

@@ -11,7 +11,7 @@ function Admin() {
 
   const handelDeleteAdmin = (id) => {
     axios
-      .delete(`${url}/auth/delete/${id}`)
+      .delete(`${url}auth/delete/${id}`)
       .then((response) => {
         setAdminss(response.data.data);
         console.log("Admin successfully deleted.");
@@ -42,20 +42,21 @@ function Admin() {
     name: "",
     email: "",
     password: "",
+    password_confirmation: "",
     role: "admin",
   });
 
-  // edit admin
   const handleAddAdmin = () => {
     console.log(Adminss.splice(-1));
     axios
-      .post(`${url}/auth/register`, newAdmin)
+      .post(`${url}auth/register`, newAdmin)
       .then((response) => {
         setAdminss([response.data.message, ...Adminss]);
         setNewAdmin({
           name: "",
           email: "",
           password: "",
+          password_confirmation: "",
           role: "admin",
         });
       })
@@ -93,167 +94,176 @@ function Admin() {
   return (
     <>
       <div className="admin-main-table">
-        
-          <input type="checkbox" name="" id="nav-toggle" />
-          <div className="table-container">
-            <table className="Admin-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>role</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Adminss.map((Admin, index) => (
-                  <tr key={index}>
-                    <td>{Admin.id}</td>
-                    
-                    <td>
-                      {editingAdmin === Admin.id ? (
-                        <input
-                          type="text"
-                         defaultValue={Admin.name}
-                          onChange={(event) =>
-                            handleEditAdmin(Admin.id, {
-                              ...Admin,
-                              name: event.target.value,
-                            })
-                          }
-                        />
-                      ) : (
-                        Admin.name
-                      )}
-                    </td>
-                    <td>
-                      {editingAdmin === Admin.id ? (
-                        <input
-                          type="text"
-                          defaultValue={Admin.email}
-                          onChange={(event) =>
-                            handleEditAdmin(Admin.id, {
-                              ...Admin,
-                              email: event.target.value,
-                            })
-                          }
-                        />
-                      ) : (
-                        Admin.email
-                      )}
-                    </td>
-                    <td>
-                      {editingAdmin === Admin.id ? (
-                        <input
-                          type="text"
-                          defaultValue={Admin.role}
-                          onChange={(event) =>
-                            handleEditAdmin(Admin.id, {
-                              ...Admin,
-                              role: event.target.value,
-                            })
-                          }
-                        />
-                      ) : (
-                        Admin.role
-                      )}
-                    </td>
-                    <td>
-                      {editingAdmin === Admin.id ? (
-                        <>
-                          <button
-                            onClick={() =>
-                              handleSaveTransation(Admin.id, Admin)
-                            }
-                          >
-                            Save
-                          </button>
-                          <button onClick={() => setEditingAdmin(null)}>
-                            Cancel
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button onClick={() => setEditingAdmin(Admin.id)}>
-                            Edit
-                          </button>
-                          <button onClick={() => handelDeleteAdmin(Admin.id)}>
-                            Delete
-                          </button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <Pagination
-              onChange={(page) => setCurrentPage(page)}
-              current={currentPage}
-              all={allAdminss}
-            />
-          </div>
+        <input type="checkbox" name="" id="nav-toggle" />
+        <div className="admin-table-container">
+          <table className="Admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Adminss.map((Admin, index) => (
+                <tr key={index}>
+                  <td>{Admin.id}</td>
 
-          <input type="checkbox" name="" id="nav-toggle" />
-          <div className="admin-content">
-            <label>
-              Name:{" "}
-              <input
-                type="email"
-                value={newAdmin.name}
-                onChange={(event) =>
-                  setNewAdmin({
-                    ...newAdmin,
-                    name: event.target.value,
-                  })
-                }
-              />
-            </label>
-            <label>
-              email:
-              <input
-                type="email"
-                value={newAdmin.email}
-                onChange={(event) =>
-                  setNewAdmin({
-                    ...newAdmin,
-                    email: event.target.value,
-                  })
-                }
-              />
-            </label>
-            <label>
-              role:{" "}
-              <select
-                value={newAdmin.role}
-                onChange={(event) =>
-                  setNewAdmin({
-                    ...newAdmin,
-                    role: event.target.value,
-                  })
-                }
-              >
-                <option value="admin">admin</option>
-                <option value="super admin">Super admin</option>
-              </select>
-            </label>
-            <label>
-              password:{" "}
-              <input
-                type="password"
-                value={newAdmin.password}
-                onChange={(event) =>
-                  setNewAdmin({
-                    ...newAdmin,
-                    password: event.target.value,
-                  })
-                }
-              />
-            </label>
-            <button onClick={handleAddAdmin}>Add</button>
-          </div>
-        
+                  <td>
+                    {editingAdmin === Admin.id ? (
+                      <input
+                        type="text"
+                        defaultValue={Admin.name}
+                        onChange={(event) =>
+                          handleEditAdmin(Admin.id, {
+                            ...Admin,
+                            name: event.target.value,
+                          })
+                        }
+                      />
+                    ) : (
+                      Admin.name
+                    )}
+                  </td>
+                  <td>
+                    {editingAdmin === Admin.id ? (
+                      <input
+                        type="text"
+                        defaultValue={Admin.email}
+                        onChange={(event) =>
+                          handleEditAdmin(Admin.id, {
+                            ...Admin,
+                            email: event.target.value,
+                          })
+                        }
+                      />
+                    ) : (
+                      Admin.email
+                    )}
+                  </td>
+                  <td>
+                    {editingAdmin === Admin.id ? (
+                      <input
+                        type="text"
+                        defaultValue={Admin.role}
+                        onChange={(event) =>
+                          handleEditAdmin(Admin.id, {
+                            ...Admin,
+                            role: event.target.value,
+                          })
+                        }
+                      />
+                    ) : (
+                      Admin.role
+                    )}
+                  </td>
+                  <td>
+                    {editingAdmin === Admin.id ? (
+                      <>
+                        <button
+                          onClick={() => handleSaveTransation(Admin.id, Admin)}
+                        >
+                          Save
+                        </button>
+                        <button onClick={() => setEditingAdmin(null)}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button onClick={() => setEditingAdmin(Admin.id)}>
+                          Edit
+                        </button>
+                        <button onClick={() => handelDeleteAdmin(Admin.id)}>
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Pagination
+            onChange={(page) => setCurrentPage(page)}
+            current={currentPage}
+            all={allAdminss}
+          />
+        </div>
+
+        <input type="checkbox" name="" id="nav-toggle" />
+        <div className="admin-content">
+          <label>
+            Name:{" "}
+            <input
+              type="text"
+              value={newAdmin.name}
+              onChange={(event) =>
+                setNewAdmin({
+                  ...newAdmin,
+                  name: event.target.value,
+                })
+              }
+            />
+          </label>
+          <label>
+            email:
+            <input
+              type="email"
+              value={newAdmin.email}
+              onChange={(event) =>
+                setNewAdmin({
+                  ...newAdmin,
+                  email: event.target.value,
+                })
+              }
+            />
+          </label>
+          <label>
+            role:{" "}
+            <select
+              value={newAdmin.role}
+              onChange={(event) =>
+                setNewAdmin({
+                  ...newAdmin,
+                  role: event.target.value,
+                })
+              }
+            >
+              <option value="admin">admin</option>
+              <option value="super admin">Super admin</option>
+            </select>
+          </label>
+          <label>
+            password:{" "}
+            <input
+              type="password"
+              value={newAdmin.password}
+              onChange={(event) =>
+                setNewAdmin({
+                  ...newAdmin,
+                  password: event.target.value,
+                })
+              }
+            />
+          </label>
+          <label>
+          password_confirmation:{" "}
+            <input
+              type="password"
+              value={newAdmin.password_confirmation}
+              onChange={(event) =>
+                setNewAdmin({
+                  ...newAdmin,
+                  password_confirmation: event.target.value,
+                })
+              }
+            />
+          </label>
+          <button onClick={handleAddAdmin}>Add</button>
+        </div>
       </div>
     </>
   );
