@@ -29,9 +29,6 @@ export default function Row({
       <td>
         <button>Edit</button>
         <button
-          // onClick={(e) => {
-          //   handleDeleteCategory(id);
-          // }}
           onClick={() => {
             handelDelete(id);
           }}
