@@ -1,5 +1,4 @@
 import "./dashboard.css";
-import { BsSearch } from "react-icons/bs";
 import { AiOutlineBars, AiOutlineTransaction } from "react-icons/ai";
 import { FiLogOut, FiUsers } from "react-icons/fi";
 import { BiCategory } from "react-icons/bi";
@@ -10,6 +9,9 @@ import image from "../images/logo.png";
 const DashBoard = () => {
     const location = useLocation();
     console.log(location, window.location.pathname);
+    const logout = () => {
+        localStorage.clear("token", "email");
+    };
     return (
         <>
             <input type="checkbox" name="" id="nav-toggle" />
@@ -32,14 +34,15 @@ const DashBoard = () => {
                                               color: "#4f7439",
                                               padding: "1rem 1rem",
                                               borderRadius: "39px",
-                                              transition: "all 0.3s ease-out",
+                                              transition:
+                                                  "all 0.3s ease-in-out",
                                           }
                                         : {
                                               backgroundColor: "#4f7439",
                                               color: "#fff",
                                               padding: "1rem 1rem",
                                               borderRadius: "0",
-                                              transition: "all 0.3s ease-out",
+                                              transition: "none",
                                           }
                                 }
                             >
@@ -55,14 +58,15 @@ const DashBoard = () => {
                                               color: "#4f7439",
                                               padding: "1rem 1rem",
                                               borderRadius: "39px",
-                                              transition: "all 0.3s ease-out",
+                                              transition:
+                                                  "all 0.3s ease-in-out",
                                           }
                                         : {
                                               backgroundColor: "#4f7439",
                                               color: "#fff",
                                               padding: "1rem 1rem",
                                               borderRadius: "0",
-                                              transition: "all 0.3s ease-out",
+                                              transition: "none",
                                           }
                                 }
                             >
@@ -78,14 +82,15 @@ const DashBoard = () => {
                                               color: "#4f7439",
                                               padding: "1rem 1rem",
                                               borderRadius: "39px",
-                                              transition: "all 0.3s ease-out",
+                                              transition:
+                                                  "all 0.3s ease-in-out",
                                           }
                                         : {
                                               backgroundColor: "#4f7439",
                                               color: "#fff",
                                               padding: "1rem 1rem",
                                               borderRadius: "0",
-                                              transition: "all 0.3s ease-out",
+                                              transition: "none",
                                           }
                                 }
                             >
@@ -101,19 +106,68 @@ const DashBoard = () => {
                                               color: "#4f7439",
                                               padding: "1rem 1rem",
                                               borderRadius: "39px",
-                                              transition: "all 0.3s ease-out",
+                                              transition:
+                                                  "all 0.3s ease-in-out",
                                           }
                                         : {
                                               backgroundColor: "#4f7439",
                                               color: "#fff",
                                               padding: "1rem 1rem",
                                               borderRadius: "0",
-                                              transition: "all 0.3s ease-out",
+                                              transition: "none",
                                           }
                                 }
                             >
                                 <AiOutlineTransaction />
                                 <span>Transactions</span>
+                            </Link>
+                            <Link
+                                to="/incometransactions"
+                                style={
+                                    location.pathname === "/incometransactions"
+                                        ? {
+                                              backgroundColor: "#fff",
+                                              color: "#4f7439",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "39px",
+                                              transition:
+                                                  "all 0.3s ease-in-out",
+                                          }
+                                        : {
+                                              backgroundColor: "#4f7439",
+                                              color: "#fff",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "0",
+                                              transition: "none",
+                                          }
+                                }
+                            >
+                                <AiOutlineTransaction />
+                                <span>Income Transactions</span>
+                            </Link>
+                            <Link
+                                to="/expensetransactions"
+                                style={
+                                    location.pathname === "/expensetransactions"
+                                        ? {
+                                              backgroundColor: "#fff",
+                                              color: "#4f7439",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "39px",
+                                              transition:
+                                                  "all 0.3s ease-in-out",
+                                          }
+                                        : {
+                                              backgroundColor: "#4f7439",
+                                              color: "#fff",
+                                              padding: "1rem 1rem",
+                                              borderRadius: "0",
+                                              transition: "none",
+                                          }
+                                }
+                            >
+                                <AiOutlineTransaction />
+                                <span>Expense Transactions</span>
                             </Link>
                         </ul>
                     </div>
@@ -121,7 +175,7 @@ const DashBoard = () => {
                         <ul>
                             <Link to="/">
                                 <FiLogOut />
-                                <span>Logout</span>
+                                <span onClick={logout}>Logout</span>
                             </Link>
                         </ul>
                     </div>
@@ -137,12 +191,6 @@ const DashBoard = () => {
                         </label>
                         Dashboard
                     </h2>
-                    <div className="search-wrapper">
-                        <span className="las la-search">
-                            <BsSearch />
-                        </span>
-                        <input type="search" placeholder="Search here" />
-                    </div>
                     <div className="user-wrapper">
                         <img src="" width={"40px"} height={"40px"} alt="" />
                         <div>

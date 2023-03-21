@@ -41,28 +41,48 @@ function Transactions() {
         category_id: "",
         date: "",
         currency: "$",
-        start_date: "",
-        end_date: "",
     });
 
     const handleAddTransaction = () => {
-        console.log(transactions.splice(-1));
-        axios
-            .post(`${url}transactions/create/fixed`, newTransaction)
-            .then((response) => {
-                setTransactions([response.data.data, ...transactions]);
-                setNewTransaction({
-                    description: "",
-                    amount: "",
-                    title: "",
-                    category_id: "",
-                    date: "",
-                    currency: "$",
-                    start_date: "",
-                    end_date: "",
-                });
-            })
-            .catch((error) => console.error(`Error:${error}`));
+        if (
+            newTransaction.start_date &&
+            newTransaction.end_date &&
+            newTransaction.duration &&
+            newTransaction.interval
+        ) {
+            axios
+                .post(`${url}transactions/create/recurring`, newTransaction)
+                .then((response) => {
+                    setTransactions([response.data.data, ...transactions]);
+                    setNewTransaction({
+                        description: "",
+                        amount: "",
+                        title: "",
+                        category_id: "",
+                        currency: "$",
+                        start_date: "",
+                        end_date: "",
+                        duration: "",
+                        interval: "",
+                    });
+                })
+                .catch((error) => console.error(`Error:${error}`));
+        } else {
+            axios
+                .post(`${url}transactions/create/fixed`, newTransaction)
+                .then((response) => {
+                    setTransactions([response.data.data, ...transactions]);
+                    setNewTransaction({
+                        description: "",
+                        amount: "",
+                        title: "",
+                        category_id: "",
+                        date: "",
+                        currency: "$",
+                    });
+                })
+                .catch((error) => console.error(`Error:${error}`));
+        }
     };
 
     const handleEditTransaction = (id, editedTransaction) => {
@@ -101,7 +121,6 @@ function Transactions() {
                     <table className="transaction-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Category</th>
                                 <th>Date</th>
                                 <th>Start</th>
@@ -117,7 +136,6 @@ function Transactions() {
                         <tbody>
                             {transactions.map((transaction, index) => (
                                 <tr key={index}>
-                                    <td>{transaction.id}</td>
                                     <td>{transaction.category_id}</td>
                                     <td>{transaction.date}</td>
                                     <td>{transaction.recurring?.start_date}</td>
@@ -255,6 +273,58 @@ function Transactions() {
                             }
                         />
                     </label>
+                    <label htmlFor="">
+                        Start:{" "}
+                        <input
+                            type="date"
+                            value={newTransaction.start_date}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    start_date: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        End:{" "}
+                        <input
+                            type="date"
+                            value={newTransaction.end_date}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    end_date: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        Duration:{" "}
+                        <input
+                            type="number"
+                            value={newTransaction.duration}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    duration: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        Interval:{" "}
+                        <input
+                            type="text"
+                            value={newTransaction.interval}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    interval: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
                     <label>
                         Description:{" "}
                         <select
@@ -317,7 +387,9 @@ function Transactions() {
                             <option value="recurrening">Recurrening</option>
                         </select>
                     </label>
-                    <button onClick={handleAddTransaction}>Add</button>
+                    <div>
+                        <button onClick={handleAddTransaction}>Add</button>
+                    </div>
                 </div>
             </>
         </>

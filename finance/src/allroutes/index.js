@@ -6,6 +6,8 @@ import PrivateRoute from "../Review/PrivateRoute.jsx";
 import PublicRoutes from "../Review/PublicRoute.jsx";
 import TestPage from "../pages/testPage/testPage.jsx";
 import Transactions from "../pages/transactions/transactions.jsx";
+import ExpenseTransactions from "../pages/expenseTransactions/expenseTransactions.jsx";
+import IncomeTransactions from "../pages/incomeTransactions/incomeTransactions.jsx";
 
 class AllRoutes extends Component {
     render() {
@@ -18,6 +20,14 @@ class AllRoutes extends Component {
                             path="/transactions"
                             element={<Transactions />}
                         />
+                        <Route
+                            path="/expensetransactions"
+                            element={<ExpenseTransactions />}
+                        ></Route>
+                        <Route
+                            path="/incometransactions"
+                            element={<IncomeTransactions />}
+                        ></Route>
                         <Route path="/dashboard" element={<TestPage />} />
                         <Route path="/" element={<Login />} />
                     </Routes>
