@@ -45,7 +45,7 @@
   
   .cards {
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
     align-items: center;
     justify-content: space-between;
   }
@@ -57,10 +57,3 @@
     width: 50%;
     margin: 10px;
   }
-  /* .card-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 50%;
-    gap: 2rem;
-  } */

@@ -2,10 +2,11 @@ import { Card } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DashBoard from "../sidebar/dashboard";
+import Cards from "../total-card/card.js";
 import "./profit.css";
 
 function ProfitGoalCard() {
-  const [profitGoal, setProfitGoal] = useState(0);
+  const [profitGoal, setProfitGoal] = useState(100000);
   const [income, setIncome] = useState(0);
   const [expense, setExpenses] = useState(0);
   const [total, setTotal] = useState(0);
@@ -64,14 +65,15 @@ function ProfitGoalCard() {
 
   return (
     <>
-    {/* <DashBoard/>
-    <Card/> */}
+    <DashBoard/>
+    
     <div className="container-profit">
+    <Cards/>
       <div className="card-profit" style={{ width: "50%" }}>
         <div className="card-header">Profit Goal</div>
         <div className="card-body">
           <label htmlFor="profit-input" className="prof-label">Enter Profit Goal ($):</label>
-          <input className="profit-input" id="profit-input" type="number" placeholder="profit goal" onChange={handleInputChange} />
+          <input className="profit-input" id="profit-input" type="number" placeholder="profit goal" onChange={handleInputChange} defaultValue="100000"/>
         </div>
         <div className="progress">
           <div

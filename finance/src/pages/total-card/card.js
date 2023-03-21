@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./card.css";
-import DashBoard from "../sidebar/dashboard";
 
 
 const Card = ({ title, value, icon, type }) => {
@@ -88,7 +87,6 @@ const Cards = () => {
 
   return (
     <div className="card-container">
-    <DashBoard/>
       <div className="cards">
         <div className="cards-1">
           <Card {...incomeData} />
