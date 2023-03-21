@@ -1,55 +1,97 @@
-// import * as React from "react";
-// import LinearProgress, {LinearProgressProps,} from "@mui/material/LinearProgress";
-// import Typography from "@mui/material/Typography";
-// import Box from "@mui/material/Box";
-// import {AiOutlineEdit} from "react-icons/ai"
-// import "./profit.css";
+import { Card } from "antd";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import DashBoard from "../sidebar/dashboard";
+import "./profit.css";
 
-// function LinearProgressWithLabel(
-//   props: LinearProgressProps & { value: number }
-// ) {
-//   return (
-//     <>
-//   <div className="title-icon">
-//     <div className="profit-title">profit goals</div>
-//     <div className="input-profit">
-//       <input type="text"/>
-//     </div>
-//     <AiOutlineEdit className="profit-edit-icon"/>
-//     </div>
-//     <Box
-//     className="MuiBox-root-css-gmuwbf"
-//     >
-//       <Box sx={{ width: "50%", mr: 1, backgroundColor:"green" }}>
-//         <LinearProgress variant="determinate" {...props} />
-//       </Box>
-//       <Box sx={{ minWidth: 35 }}>
-//         <Typography variant="body2" color="text.secondary">{`${Math.round(
-//           props.value
-//         )}%`}</Typography>
-//       </Box>
-//     </Box>
-//     </>
-//   );
-// }
+function ProfitGoalCard() {
+  const [profitGoal, setProfitGoal] = useState(0);
+  const [income, setIncome] = useState(0);
+  const [expense, setExpenses] = useState(0);
+  const [total, setTotal] = useState(0);
 
-// export default function LinearWithValueLabel() {
-//   const [progress, setProgress] = React.useState(10);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/transactions/income"
+        );
+        const responses = await axios.get(
+          "http://localhost:8000/api/transactions/expense"
+        );
+        const transactions = response.data.data;
+        const transaction = responses.data.data;
 
-//   React.useEffect(() => {
-//     const timer = setInterval(() => {
-//       setProgress((prevProgress) =>
-//         prevProgress >= 100 ? 10 : prevProgress + 10
-//       );
-//     }, 800);
-//     return () => {
-//       clearInterval(timer);
-//     };
-//   }, []);
+        let incomeAmount = 0;
+        let expensesAmount = 0;
 
-//   return (
-//     <Box sx={{ width: "100%" }}>
-//       <LinearProgressWithLabel value={progress} />
-//     </Box>
-//   );
-// }
+        // Calculate the total income amount
+        for (let i = 0; i < transactions.length; i++) {
+          incomeAmount += transactions[i].amount;
+        }
+
+        // Calculate the total expenses amount
+        for (let i = 0; i < transaction.length; i++) {
+          expensesAmount += transaction[i].amount;
+        }
+
+        setIncome(incomeAmount);
+        setExpenses(expensesAmount);
+        setTotal(incomeAmount - expensesAmount);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Calculate the total profit
+  const totalProfit = income - expense;
+
+  // Calculate the progress percentage
+  const progressPercentage = (totalProfit / profitGoal) * 100;
+
+  // Set the progress bar style
+  const progressBarStyle = {
+    width: `${progressPercentage}%`,
+  };
+
+  function handleInputChange(event) {
+    const value = event.target.value;
+    const percentage = value;
+    setProfitGoal(percentage);
+  }
+
+  return (
+    <>
+    {/* <DashBoard/>
+    <Card/> */}
+    <div className="container-profit">
+      <div className="card-profit" style={{ width: "50%" }}>
+        <div className="card-header">Profit Goal</div>
+        <div className="card-body">
+          <label htmlFor="profit-input" className="prof-label">Enter Profit Goal ($):</label>
+          <input className="profit-input" id="profit-input" type="number" placeholder="profit goal" onChange={handleInputChange} />
+        </div>
+        <div className="progress">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={progressBarStyle}
+          ></div>
+          <span className="progress_label">
+            {`percentage ${progressPercentage.toFixed(1)}%`}
+          </span>
+        </div>
+        {/* <div className="card-body">
+          <p className="inc">Income: ${income}</p>
+          <p className="exp">Expense: ${expense}</p>
+          <p className="tot">Total Profit: ${totalProfit}</p>
+        </div> */}
+      </div>
+    </div>
+    </>
+  );
+}
+
+export default ProfitGoalCard;

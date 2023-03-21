@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import "./transactions.css";
 import { Pagination } from "antd";
 import axios from "axios";
+import DashBoard from "../sidebar/dashboard";
 
 function Transactions() {
     const [transactions, setTransactions] = useState([]);
@@ -85,6 +86,7 @@ function Transactions() {
 
     return (
         <>
+        <DashBoard/>
             <>
                 <input type="checkbox" name="" id="nav-toggle" />
                 <div className="table-container">

@@ -6,12 +6,21 @@ import { BiCategory } from "react-icons/bi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { Link, useLocation } from "react-router-dom";
 import image from "../images/logo.png";
+import ProfitGoalCard from "../profit-goals/profit.js";
+import  Card  from "../total-card/card.js";
+
 
 const DashBoard = () => {
     const location = useLocation();
+    const logout =() => {
+        localStorage.clear("token", "email")
+      }
     console.log(location, window.location.pathname);
     return (
         <>
+         {/* <Card/> */}
+         {/* <ProfitGoalCard/>  */}
+
             <input type="checkbox" name="" id="nav-toggle" />
             <div className="sidebar">
                 <div className="sidebar-brand">
@@ -121,7 +130,7 @@ const DashBoard = () => {
                         <ul>
                             <Link to="/">
                                 <FiLogOut />
-                                <span>Logout</span>
+                                <span onClick={logout}>Logout</span>
                             </Link>
                         </ul>
                     </div>
