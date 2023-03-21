@@ -83,7 +83,7 @@ export default function Categories() {
         }}
       >
       
-        {visible ? <AiOutlineClose /> : <AiOutlineClose /> }
+        {visible ? <AiOutlineClose /> : <AiOutlinePlus /> }
       </button>
       </div>
     </>
