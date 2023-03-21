@@ -1,0 +1,102 @@
+:root {
+    --main-color: #4f7439;
+    --color-dark: #a5ada5;
+    --text-grey: #8390a2;
+}
+
+.admin-main-table{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height:  70vh;
+    width:100vh;
+
+    /* margin-left: 310px; */
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-content {
+    /* width: 100%; */
+    min-width: 543px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-table-container {
+    width: 100%;
+    overflow-y: auto;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.admin-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 543px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+}
+
+td:hover{
+    color:green;
+    background-color: #e6ebe6;
+}
+
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+    vertical-align: top;
+    transition: all 0.3s ease-in-out;
+    border-top: 1px solid var(--color-dark);
+}
+
+th {
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: white;
+}
+
+
+tr:nth-child(even) {
+    background-color: var(--text-grey);
+}
+tbody,
+tr:hover {
+    background-color: var(--color-dark);
+}
+
+button {
+    margin: 0 5px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e5f2d;
+}
+
+#nav-toggle:checked ~ .table-container,
+#nav-toggle:checked ~ .minor-content {
+    width: 96%;
+    transition: all 0.3s ease-in-out;
+}
+
+.main-table:has(#nav-toggle:checked) {
+    transition: all 0.3s ease-in-out;
+    margin-left: 80px;
+}

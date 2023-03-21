@@ -6,6 +6,7 @@ import PrivateRoute from "../Review/PrivateRoute.jsx";
 import PublicRoutes from "../Review/PublicRoute.jsx";
 import TestPage from "../pages/testPage/testPage.jsx";
 import Transactions from "../pages/transactions/transactions.jsx";
+import Admins from "../pages/admins-panel/admin.jsx";
 
 class AllRoutes extends Component {
     render() {
@@ -14,6 +15,7 @@ class AllRoutes extends Component {
                 <div className="main-table">
                     <DashBoard />
                     <Routes>
+                        <Route path="/admins" element={<Admins/>}/>
                         <Route
                             path="/transactions"
                             element={<Transactions />}
