@@ -3,7 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
-import logo from "../images/logo.png";
+import logo from "./images/logo-finance2.png";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -33,8 +33,6 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        console.log("Email:", email);
-        console.log("Password:", password);
 
         try {
             const response = await axios.post(
@@ -42,16 +40,20 @@ function Login() {
                 { email, password }
             );
             const data = response.data;
-            console.log("Server response:", data);
+            //   console.log("Server response:", data);
             if (data && data.access_token) {
                 localStorage.setItem("loggedInAdminId", data.id || "");
-                localStorage.setItem("token", data.token || "");
+                localStorage.setItem("token", data.access_token || "");
                 localStorage.setItem("email", data.email || "");
-                console.log("Local storage:", localStorage);
-                toast.success("Success Login !", {
+
+                // use `await` to wait for the toast to complete
+                await toast.success("Success Login !", {
                     position: toast.POSITION.TOP_CENTER,
                 });
-                navigate("/dashboard");
+
+                setTimeout(() => {
+                    navigate("/dashboard");
+                }, 2000); // wait for 2 seconds before navigating
             } else {
                 throw new Error("Invalid email or password");
             }
