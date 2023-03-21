@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Pagination } from "antd";
 import axios from "axios";
+import DashBoard from "../sidebar/dashboard";
 
 function IncomeTransactions() {
     const [transactions, setTransactions] = useState([]);
@@ -25,6 +26,7 @@ function IncomeTransactions() {
     return (
         <>
             <>
+                <DashBoard />
                 <input type="checkbox" name="" id="nav-toggle" />
                 <div className="table-container">
                     <table className="transaction-table">
