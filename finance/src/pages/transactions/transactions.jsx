@@ -14,7 +14,8 @@ function Transactions() {
         axios
             .delete(`${url}transactions/delete/${id}`)
             .then((response) => {
-                setTransactions(response.data.data);
+                handelGetTransactions();
+                console.log(response);
                 console.log("Transaction successfully deleted.");
             })
             .catch((error) => console.error(`Error:${error}`));
@@ -54,7 +55,7 @@ function Transactions() {
             axios
                 .post(`${url}transactions/create/recurring`, newTransaction)
                 .then((response) => {
-                    setTransactions([response.data.data, ...transactions]);
+                    handelGetTransactions();
                     setNewTransaction({
                         description: "",
                         amount: "",
@@ -72,7 +73,7 @@ function Transactions() {
             axios
                 .post(`${url}transactions/create/fixed`, newTransaction)
                 .then((response) => {
-                    setTransactions([response.data.data, ...transactions]);
+                    handelGetTransactions();
                     setNewTransaction({
                         description: "",
                         amount: "",
@@ -116,8 +117,8 @@ function Transactions() {
 
     return (
         <>
-        <DashBoard/>
             <>
+                <DashBoard />
                 <input type="checkbox" name="" id="nav-toggle" />
                 <div className="table-container">
                     <table className="transaction-table">
@@ -329,7 +330,8 @@ function Transactions() {
                     </label>
                     <label>
                         Description:{" "}
-                        <select
+                        <input
+                            type="text"
                             value={newTransaction.description}
                             onChange={(event) =>
                                 setNewTransaction({
@@ -337,11 +339,7 @@ function Transactions() {
                                     description: event.target.value,
                                 })
                             }
-                        >
-                            <option style={{ display: "none" }}>select</option>
-                            <option value="income">income</option>
-                            <option value="expense">expense</option>
-                        </select>
+                        />
                     </label>
                     <label>
                         Amount:{" "}
@@ -386,7 +384,7 @@ function Transactions() {
                         >
                             <option style={{ display: "none" }}>select</option>
                             <option value="fixed">Fixed</option>
-                            <option value="recurrening">Recurrening</option>
+                            <option value="recurring">Recurring</option>
                         </select>
                     </label>
                     <div>

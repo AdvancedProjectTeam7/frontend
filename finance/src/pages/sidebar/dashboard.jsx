@@ -2,6 +2,7 @@ import "./dashboard.css";
 import { AiOutlineBars, AiOutlineTransaction } from "react-icons/ai";
 import { FiLogOut, FiUsers } from "react-icons/fi";
 import { BiCategory } from "react-icons/bi";
+import { GiExpense, GiProfit } from "react-icons/gi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { Link, useLocation } from "react-router-dom";
 import image from "../images/logo.png";
@@ -143,7 +144,7 @@ const DashBoard = () => {
                                           }
                                 }
                             >
-                                <AiOutlineTransaction />
+                                <GiProfit />
                                 <span>Income Transactions</span>
                             </Link>
                             <Link
@@ -167,7 +168,7 @@ const DashBoard = () => {
                                           }
                                 }
                             >
-                                <AiOutlineTransaction />
+                                <GiExpense />
                                 <span>Expense Transactions</span>
                             </Link>
                         </ul>

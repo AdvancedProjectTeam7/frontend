@@ -46,7 +46,7 @@ function ExpenseTransactions() {
                         <tbody>
                             {transactions.map((transaction, index) => (
                                 <tr key={index}>
-                                    <td>{transaction.category.name}</td>
+                                    <td>{transaction.category.type}</td>
                                     <td>{transaction.date}</td>
                                     <td>{transaction.recurring?.start_date}</td>
                                     <td>{transaction.recurring?.end_date}</td>
