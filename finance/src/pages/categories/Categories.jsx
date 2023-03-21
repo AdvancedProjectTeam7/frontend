@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Row from "./Row";
 import "./categories.css";
+import {AiOutlinePlus,AiOutlineClose} from "react-icons/ai" 
+
 import AddCategoryForm from "./AddCategoryForm";
 
 export default function Categories() {
@@ -37,6 +39,7 @@ export default function Categories() {
     return <h2>Loading</h2>;
   }
   return (
+    <>
     <div>
       <div className="form">
         {visible ? (
@@ -52,9 +55,9 @@ export default function Categories() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Categ</th>
+            <th>Category</th>
             <th>Type</th>
-            <th>Edit/Delete</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -79,8 +82,10 @@ export default function Categories() {
           setVisible(!visible);
         }}
       >
-        {visible ? "x" : "+"}
+      
+        {visible ? <AiOutlineClose /> : <AiOutlineClose /> }
       </button>
-    </div>
+      </div>
+    </>
   );
 }

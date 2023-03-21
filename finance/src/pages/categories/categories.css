@@ -7,10 +7,10 @@
 }
 
 .addButton {
-    width: 100%;
-    line-height: 2;
-    margin:  0 !important;
+    width: 5%;
+    border-radius: 30px;
 }   
 table{
     width: 100% !important;
+    border-collapse: collapse;
 }
