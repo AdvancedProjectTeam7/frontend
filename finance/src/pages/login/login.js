@@ -13,6 +13,7 @@ function Login() {
         email: false,
         password: false,
     });
+
     const navigate = useNavigate();
 
     const handleEmailChange = (event) => {
@@ -40,20 +41,16 @@ function Login() {
                 { email, password }
             );
             const data = response.data;
-            //   console.log("Server response:", data);
             if (data && data.access_token) {
                 localStorage.setItem("loggedInAdminId", data.id || "");
                 localStorage.setItem("token", data.access_token || "");
                 localStorage.setItem("email", data.email || "");
-
-                // use `await` to wait for the toast to complete
                 await toast.success("Success Login !", {
                     position: toast.POSITION.TOP_CENTER,
                 });
-
                 setTimeout(() => {
                     navigate("/dashboard");
-                }, 2000); // wait for 2 seconds before navigating
+                }, 2000);
             } else {
                 throw new Error("Invalid email or password");
             }

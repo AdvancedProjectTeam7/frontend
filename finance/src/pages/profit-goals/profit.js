@@ -65,7 +65,6 @@ function ProfitGoalCard() {
     return (
         <>
             <DashBoard />
-
             <div className="container-profit">
                 <Cards />
                 <div className="card-profit" style={{ width: "50%" }}>

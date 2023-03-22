@@ -41,8 +41,6 @@ function Transactions() {
                         .delete(`${url}transactions/delete/${id}`)
                         .then((response) => {
                             handelGetTransactions();
-                            console.log(response);
-                            console.log("Transaction successfully deleted.");
                         })
                         .catch((error) => console.error(`Error:${error}`));
                 } else if (

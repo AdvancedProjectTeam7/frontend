@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 const DashBoard = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location, window.location.pathname);
 
     const logout = () => {
         localStorage.clear("token", "email");
