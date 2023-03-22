@@ -226,7 +226,7 @@ function Admin() {
               onChange={(event) =>
                 setNewAdmin({
                   ...newAdmin,
-                  email: event.target.value,
+                //   email: event.target.value,
                 })
               }
             />
