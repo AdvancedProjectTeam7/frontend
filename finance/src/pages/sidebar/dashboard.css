@@ -50,6 +50,7 @@
     justify-content: space-between;
     transition: all 0.3s ease-in-out;
     height: 80vh;
+    width: 65%;
 }
 
 .sidebar-menu a {
@@ -141,17 +142,13 @@ header h2 {
     .sidebar ul a span:last-child {
         display: none;
     }
-    /* 
-    .main-content {
-        margin-left: 70px;
-    } */
 
     .main-content header {
         left: 80px;
         width: calc(100% - 80px);
     }
 
-    .la-bars{
+    .la-bars {
         display: none;
     }
 }

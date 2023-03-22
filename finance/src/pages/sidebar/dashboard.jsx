@@ -6,14 +6,25 @@ import { GiExpense, GiProfit } from "react-icons/gi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { Link, useLocation } from "react-router-dom";
 import image from "../images/logo.png";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const DashBoard = () => {
     const location = useLocation();
-
+    const navigate = useNavigate();
     console.log(location, window.location.pathname);
+
     const logout = () => {
         localStorage.clear("token", "email");
+        setTimeout(
+            () => {
+                navigate("/");
+            },
+            Swal.fire("Logged out!", "Successfully", "success"),
+            3000
+        );
     };
+
     return (
         <>
             <input type="checkbox" name="" id="nav-toggle" />
@@ -22,7 +33,7 @@ const DashBoard = () => {
                     <span className="lab la-accusoft">
                         <img src={image} alt="" width={"60px"} height={"40x"} />
                     </span>
-                    <h2>Masroufak</h2>
+                    <h2>Masroofak</h2>
                 </div>
                 <div className="sidebar-menu">
                     <div className="sidebar-menu-first">
@@ -176,7 +187,7 @@ const DashBoard = () => {
                     <div className="sidebar-menu-second">
                         <ul>
                             <Link to="/">
-                                <FiLogOut />
+                                <FiLogOut onClick={logout} />
                                 <span onClick={logout}>Logout</span>
                             </Link>
                         </ul>

@@ -71,7 +71,7 @@ function Login() {
             <div className="container">
                 <div className="left-side">
                     <img className="logo1" src={logo} alt="logo" />
-                    <h2 className="logo-title">Masroufak</h2>
+                    <h2 className="logo-title">Masroofak</h2>
                 </div>
                 <div className="right-side">
                     <form className="login-form">

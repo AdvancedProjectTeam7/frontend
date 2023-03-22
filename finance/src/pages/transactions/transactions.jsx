@@ -3,6 +3,7 @@ import "./transactions.css";
 import { Pagination } from "antd";
 import axios from "axios";
 import DashBoard from "../sidebar/dashboard";
+import Swal from "sweetalert2";
 
 function Transactions() {
     const [transactions, setTransactions] = useState([]);
@@ -11,14 +12,50 @@ function Transactions() {
     const url = `http://127.0.0.1:8000/api/`;
 
     const handelDeleteTransaction = (id) => {
-        axios
-            .delete(`${url}transactions/delete/${id}`)
-            .then((response) => {
-                handelGetTransactions();
-                console.log(response);
-                console.log("Transaction successfully deleted.");
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger",
+            },
+            buttonsStyling: false,
+        });
+
+        swalWithBootstrapButtons
+            .fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true,
             })
-            .catch((error) => console.error(`Error:${error}`));
+            .then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        "Deleted!",
+                        "Your file has been deleted.",
+                        "success"
+                    );
+                    axios
+                        .delete(`${url}transactions/delete/${id}`)
+                        .then((response) => {
+                            handelGetTransactions();
+                            console.log(response);
+                            console.log("Transaction successfully deleted.");
+                        })
+                        .catch((error) => console.error(`Error:${error}`));
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        "Cancelled",
+                        "Your transaction is safe :)",
+                        "error"
+                    );
+                }
+            });
     };
 
     const handelGetTransactions = useCallback(() => {
