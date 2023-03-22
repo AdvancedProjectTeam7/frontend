@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
 import logo from "./images/logo-finance2.png";
@@ -64,7 +64,6 @@ function Login() {
 
     return (
         <>
-            <ToastContainer className="my-toast-container" />
             <div className="container">
                 <div className="left-side">
                     <img className="logo1" src={logo} alt="logo" />
