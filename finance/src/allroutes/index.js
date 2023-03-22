@@ -8,37 +8,36 @@ import Transactions from "../pages/transactions/transactions.jsx";
 import Profit from "../pages/profit-goals/profit.js";
 import ExpenseTransactions from "../pages/expenseTransactions/expenseTransactions.jsx";
 import IncomeTransactions from "../pages/incomeTransactions/incomeTransactions.jsx";
+import Admin from "../pages/admins-panel/admin.jsx";
 
 class AllRoutes extends Component {
-    render() {
-        return (
-            <BrowserRouter>
-                <div className="main-table">
-                    <Routes>
-                        <Route element={<PublicRoutes />}>
-                            <Route path="/" element={<Login />} />
-                        </Route>
-                        <Route element={<PrivateRoute />}>
-                            <Route
-                                path="/expensetransactions"
-                                element={<ExpenseTransactions />}
-                            ></Route>
-                            <Route
-                                path="/incometransactions"
-                                element={<IncomeTransactions />}
-                            ></Route>
-                            <Route
-                                path="/transactions"
-                                element={<Transactions />}
-                            />
-                            <Route path="/testpage" element={<TestPage />} />
-                            <Route path="/dashboard" element={<Profit />} />
-                        </Route>
-                    </Routes>
-                </div>
-            </BrowserRouter>
-        );
-    }
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="main-table">
+          <Routes>
+            <Route element={<PublicRoutes />}>
+              <Route path="/" element={<Login />} />
+            </Route>
+            <Route element={<PrivateRoute />}>
+              <Route path="/admins" element={<Admin />}></Route>
+              <Route
+                path="/expensetransactions"
+                element={<ExpenseTransactions />}
+              ></Route>
+              <Route
+                path="/incometransactions"
+                element={<IncomeTransactions />}
+              ></Route>
+              <Route path="/transactions" element={<Transactions />} />
+              <Route path="/testpage" element={<TestPage />} />
+              <Route path="/dashboard" element={<Profit />} />
+            </Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default AllRoutes;
