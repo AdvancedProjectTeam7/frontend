@@ -20,7 +20,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 320px;
+    width: 300px;
     position: fixed;
     left: 0;
     height: 100vh;
@@ -32,7 +32,7 @@
 
 .sidebar-brand {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 500%;
@@ -93,8 +93,8 @@ header {
     padding: 1rem 1.5rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
-    left: 320px;
-    width: calc(100% - 320px);
+    left: 300px;
+    width: calc(100% - 300px);
     top: 0;
     z-index: 100;
     transition: all 0.3s ease-in-out;
@@ -132,7 +132,7 @@ header h2 {
     color: var(--text-grey);
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 992px) {
     .sidebar {
         width: 80px;
     }
@@ -141,13 +141,17 @@ header h2 {
     .sidebar ul a span:last-child {
         display: none;
     }
-
+    /* 
     .main-content {
         margin-left: 70px;
-    }
+    } */
 
     .main-content header {
         left: 80px;
         width: calc(100% - 80px);
+    }
+
+    .la-bars{
+        display: none;
     }
 }

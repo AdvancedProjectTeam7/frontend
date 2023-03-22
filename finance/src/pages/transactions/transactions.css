@@ -9,7 +9,7 @@
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     height: 100vh;
     margin-left: 310px;
     transition: all 0.3s ease-in-out;
@@ -23,7 +23,9 @@
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;
+    overflow-y: auto;
     transition: all 0.3s ease-in-out;
+    gap: 5px;
 }
 
 .table-container {
@@ -92,4 +94,18 @@ button:hover {
 .main-table:has(#nav-toggle:checked) {
     transition: all 0.3s ease-in-out;
     margin-left: 80px;
+}
+
+@media (max-width: 992px) {
+    .minor-content {
+        width: 90%;
+    }
+
+    .table-container {
+        width: 90%;
+    }
+
+    .main-table {
+        margin-left: 80px;
+    }
 }

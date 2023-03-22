@@ -22,7 +22,7 @@ const DashBoard = () => {
                     <span className="lab la-accusoft">
                         <img src={image} alt="" width={"60px"} height={"40x"} />
                     </span>
-                    <h2>Finance Management</h2>
+                    <h2>Masroufak</h2>
                 </div>
                 <div className="sidebar-menu">
                     <div className="sidebar-menu-first">
@@ -145,7 +145,7 @@ const DashBoard = () => {
                                 }
                             >
                                 <GiProfit />
-                                <span>Income Transactions</span>
+                                <span>Incomes </span>
                             </Link>
                             <Link
                                 to="/expensetransactions"
@@ -169,7 +169,7 @@ const DashBoard = () => {
                                 }
                             >
                                 <GiExpense />
-                                <span>Expense Transactions</span>
+                                <span>Expenses </span>
                             </Link>
                         </ul>
                     </div>

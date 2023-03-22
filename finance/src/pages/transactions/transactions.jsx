@@ -98,7 +98,7 @@ function Transactions() {
                         return transaction;
                     }
                 });
-                setTransactions(updatedTransactions);
+                handelGetTransactions(updatedTransactions);
             })
             .catch((error) => console.error(`Error:${error}`));
     };
@@ -111,7 +111,7 @@ function Transactions() {
                 return transaction;
             }
         });
-        setTransactions(updatedTransactions);
+        handelGetTransactions(updatedTransactions);
         setEditingTransaction(null);
     };
 
@@ -124,7 +124,6 @@ function Transactions() {
                     <table className="transaction-table">
                         <thead>
                             <tr>
-                                <th>Category</th>
                                 <th>Date</th>
                                 <th>Start</th>
                                 <th>End</th>
@@ -139,7 +138,6 @@ function Transactions() {
                         <tbody>
                             {transactions.map((transaction, index) => (
                                 <tr key={index}>
-                                    <td>{transaction.category_id}</td>
                                     <td>{transaction.date}</td>
                                     <td>{transaction.recurring?.start_date}</td>
                                     <td>{transaction.recurring?.end_date}</td>
@@ -264,45 +262,6 @@ function Transactions() {
                         />
                     </label>
                     <label htmlFor="">
-                        Date:{" "}
-                        <input
-                            type="date"
-                            value={newTransaction.date}
-                            onChange={(event) =>
-                                setNewTransaction({
-                                    ...newTransaction,
-                                    date: event.target.value,
-                                })
-                            }
-                        />
-                    </label>
-                    <label htmlFor="">
-                        Start:{" "}
-                        <input
-                            type="date"
-                            value={newTransaction.start_date}
-                            onChange={(event) =>
-                                setNewTransaction({
-                                    ...newTransaction,
-                                    start_date: event.target.value,
-                                })
-                            }
-                        />
-                    </label>
-                    <label htmlFor="">
-                        End:{" "}
-                        <input
-                            type="date"
-                            value={newTransaction.end_date}
-                            onChange={(event) =>
-                                setNewTransaction({
-                                    ...newTransaction,
-                                    end_date: event.target.value,
-                                })
-                            }
-                        />
-                    </label>
-                    <label htmlFor="">
                         Duration:{" "}
                         <input
                             type="number"
@@ -370,6 +329,45 @@ function Transactions() {
                                 L.L.
                             </option>
                         </select>
+                    </label>
+                    <label htmlFor="">
+                        Date:{" "}
+                        <input
+                            type="date"
+                            value={newTransaction.date}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    date: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        Start:{" "}
+                        <input
+                            type="date"
+                            value={newTransaction.start_date}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    start_date: event.target.value,
+                                })
+                            }
+                        />
+                    </label>
+                    <label htmlFor="">
+                        End:{" "}
+                        <input
+                            type="date"
+                            value={newTransaction.end_date}
+                            onChange={(event) =>
+                                setNewTransaction({
+                                    ...newTransaction,
+                                    end_date: event.target.value,
+                                })
+                            }
+                        />
                     </label>
                     <label>
                         Title:{" "}
